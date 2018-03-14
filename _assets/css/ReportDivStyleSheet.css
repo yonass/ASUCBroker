@@ -1,0 +1,181 @@
+﻿#reportDiv
+{
+	max-width: 646px;
+	max-height: 600px;
+}
+#reportHeaderDiv
+{
+	font-weight: bold;
+	max-height: 40px;
+	padding: 10px;
+	width: 646px;
+}
+#reportItemsDiv
+{
+	max-width: 100%;
+}
+#printItemsDiv
+{
+	float: left;
+	max-width: 220px;
+	padding: 10px;
+}
+#reportButtonsDiv
+{
+	font-size: 11px;
+	text-align: center;
+	float: left;
+	width: 280px;
+	padding: 10px;
+}
+#toPrintDiv
+{
+	float: right;
+	max-width: 220px;
+	padding-top: 10px;
+	clear: right;
+}
+#reportOptionsDiv
+{
+	clear: both;
+	max-width: 100%;
+	padding: 10px;
+}
+
+#reportOptionsAlignmentDiv
+{
+	clear: both;
+	max-width: 100%;
+	padding: 10px;
+}
+
+#reportComandsDiv
+{
+	max-width: 100%;
+	padding: 10px;
+}
+
+.reportDiv
+{
+	float: left;
+	margin: 10px 10px;
+	padding: 10px 10px;
+	width: 600px;
+	font-size: 11px;
+	background-color: #F2F3ED;
+	text-transform: uppercase;
+}
+.reportDivError
+{
+	float: left;
+	margin: 10px 10px;
+	padding: 1px 2px 1px;
+	width: 400px;
+	color: Red;
+	font-size: 11px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.reportDivOk
+{
+	float: left;
+	margin: 10px 10px;
+	padding: 1px 2px 1px;
+	width: 400px;
+	font-size: 11px;
+	color: Green;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.reportDiv table
+{
+	margin: 10px 10px;
+}
+.reportDiv td
+{
+	padding: 3px 2px;
+}
+.reportDiv input
+{
+	margin: 2px 3px;
+}
+.reportDiv .RCddlFormat
+{
+	font-size: 11px;
+	width: 100px;
+}
+
+.RCtbReportName
+{
+	font-size: 11px;
+}
+
+.RClbPrintItems
+{
+	font-size: 11px;
+}
+.RCtbToPrint
+{
+	font-size: 11px;
+}
+.tdLeft
+{
+	text-align: left;
+	width: 150px;
+}
+.tdRight
+{
+	width: 300px;
+}
+.PCddlPageSize
+{
+	width: 50px;
+	text-align: left;
+	font-size: 11px;
+	margin: 1px 2px;
+}
+.PCtbToPage
+{
+	width: 30px;
+	text-align: right;
+	font-size: 11px;
+	margin: 1px 2px;
+}
+.FCddlFields
+{
+	font-size: 11px;
+	width: 85px;
+	margin: 1px 2px;
+}
+.FCddlComparators
+{
+	font-size: 11px;
+	margin: 1px 2px;
+	width: 85px;
+}
+.FCtbValue
+{
+	font-size: 11px;
+	width: 75px;
+	margin: 1px 2px;
+}
+.FCbtnFilter
+{
+	font-size: 11px;
+	margin: 1px 2px;
+}
+.FCbtnClear
+{
+	font-size: 11px;
+	margin: 1px 2px;
+}
+.FilterDiv
+{
+	float: right;
+	margin-right: 1px;
+}
+.PagerDiv
+{
+	float: left;
+	margin-left: 1px;
+}

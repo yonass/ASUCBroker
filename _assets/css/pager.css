@@ -1,0 +1,22 @@
+﻿.pager
+{
+	margin-top:10px;
+	height:30px;
+	background:url(../img/pager_bg.gif) repeat-x;
+	border: 1px solid #8B9B71;
+}
+.pager .container
+{
+    padding:4px;
+}
+.pager .command
+{
+    float:left;
+    padding-right:5px;
+}    
+.pager .info
+{
+    font-size:12px;
+    padding:4px 0px;
+    float:right;
+}

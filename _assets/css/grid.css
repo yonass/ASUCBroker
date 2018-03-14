@@ -1,0 +1,166 @@
+﻿/* table level rules */
+.grid
+{
+    font-size: 11px;
+    border: 1px solid #8B9B71;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+
+/* header column rules */
+.grid th
+{
+    padding: 4px 5px 4px 10px;
+    vertical-align: bottom;
+    text-align: left;
+    border: 1px solid #8B9B71;
+    background-image: url(../img/sprite.gif);
+    background-repeat: repeat-x;
+    background-position: 0px 0px;
+}
+
+.grid th a
+{
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    padding-right: 10px;
+}
+
+/* data cell and data row rules */
+.grid td
+{
+    padding: 4px 10px 4px 10px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #8B9B71;
+}
+
+.grid .altrow
+{
+    background-color: #EAFBF1;
+}
+
+.grid .row
+{
+    background-color: #fff;
+}
+
+.grid .row:hover
+{
+    background-color: #EAEBE3;
+}
+.grid .rowSelected
+{
+    color: White;
+    background-color: #8B9B71;
+}
+
+
+.grid .rownum
+{
+    text-align: center;
+    padding-left: 0px;
+    font-weight: bold;
+}
+
+.altenativeRow
+{
+    background-color: #EAEBE3;
+}
+
+/* table level rules */
+.gridFacture
+{
+    font-size: 11px;
+    border: 1px solid #8B9B71;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+
+/* header column rules */
+.gridFacture th
+{
+    padding: 2px 2px 2px 5px;
+    vertical-align: bottom;
+    text-align: left;
+    border: 1px solid #8B9B71;
+    background-image: url(../img/sprite.gif);
+    background-repeat: repeat-x;
+    background-position: 0px 0px;
+}
+
+.gridFacture th a
+{
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    padding-right: 10px;
+}
+
+/* data cell and data row rules */
+.gridFacture td
+{
+    padding: 2px 5px 2px 5px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #8B9B71;
+}
+
+.gridFacture .altrowFacture
+{
+    background-color: #EAFBF1;
+}
+
+.gridFacture .rowFacture
+{
+    background-color: #fff;
+}
+
+.gridFacture .rowFacture:hover
+{
+    background-color: #EAEBE3;
+}
+.gridFacture .rowFactureSelected
+{
+    color: White;
+    background-color: #8B9B71;
+}
+
+
+.grid .rownum
+{
+    text-align: center;
+    padding-left: 0px;
+    font-weight: bold;
+}
+
+.altenativeRow
+{
+    background-color: #EAEBE3;
+}
+
+.demandClass
+{
+    color: Blue;
+    text-align: right;
+}
+
+.debtClass
+{
+    color: Blue;
+    text-align: right;
+}
+.saldoClass
+{
+    color: Green;
+    text-align: right;
+}
+
+.currencyClass
+{
+    color: Green;
+    text-align: right;
+}

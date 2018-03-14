@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetByRegistrationNumber">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="registrationNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetByRegistrationNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetByRegistrationNumberResult" type="tns:VehicleInformations" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="VehicleInformations">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ClientEMBG" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientMunicipalityCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientMunicipalityName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehicleRegistrationNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehicleChassisNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehicleBrand" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehicleModel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehiclePower" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehicleVolume" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehicleCarrying" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehiclePassengers" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehicleTypeDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehicleExpirationDate" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetByRegistrationNumberSoapIn">
+    <wsdl:part name="parameters" element="tns:GetByRegistrationNumber" />
+  </wsdl:message>
+  <wsdl:message name="GetByRegistrationNumberSoapOut">
+    <wsdl:part name="parameters" element="tns:GetByRegistrationNumberResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceGetVehicleInformationSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetByRegistrationNumber">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Metod koj vraka vozilo po registarska oznaka</wsdl:documentation>
+      <wsdl:input message="tns:GetByRegistrationNumberSoapIn" />
+      <wsdl:output message="tns:GetByRegistrationNumberSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceGetVehicleInformationSoap" type="tns:WebServiceGetVehicleInformationSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetByRegistrationNumber">
+      <soap:operation soapAction="http://tempuri.org/GetByRegistrationNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceGetVehicleInformationSoap12" type="tns:WebServiceGetVehicleInformationSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetByRegistrationNumber">
+      <soap12:operation soapAction="http://tempuri.org/GetByRegistrationNumber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServiceGetVehicleInformation">
+    <wsdl:port name="WebServiceGetVehicleInformationSoap" binding="tns:WebServiceGetVehicleInformationSoap">
+      <soap:address location="http://localhost/WebServiceGetVehicleInformation.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceGetVehicleInformationSoap12" binding="tns:WebServiceGetVehicleInformationSoap12">
+      <soap12:address location="http://localhost/WebServiceGetVehicleInformation.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,1909 @@
+h1, h2, h3
+{
+    font-weight: bold;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+h1
+{
+    font-size: 2em;
+}
+
+h2
+{
+    font-size: 1.5em;
+}
+
+h3
+{
+    font-size: 1em;
+}
+
+#header
+{
+    color: #FFF;
+    padding: 0px;
+    height: 50px;
+    width: 1070px;
+    position: relative;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
+    top: 0px;
+    left: 0px;
+}
+#header #left
+{
+    margin: 0px;
+    padding: 0px;
+    float: left;
+    height: 50px;
+    width: 230px;
+    position: absolute;
+    top: 0px;
+    background-image: url(../img/top-left-bckg.gif);
+    background-repeat: no-repeat;
+    left: 0px;
+}
+#header #left img
+{
+    float: left;
+    margin-right: 10px;
+    margin-left: 15px;
+    margin-top: 4px;
+}
+
+#header #left #text
+{
+    margin: 0px;
+    position: relative;
+    padding-top: 10px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    width: 130px;
+    height: 35px;
+    left: 25px;
+    font-weight: bold;
+}
+#header #odjava
+{
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 15px;
+    width: 90px;
+    text-align: right;
+    font-weight: bold;
+}
+#header #horizontalNav
+{
+    margin: 0px;
+    width: 820px;
+    color: #fff;
+    position: absolute;
+    height: 20px;
+    background-color: #2d3931;
+    text-decoration: none;
+    left: 230px;
+    bottom: 0px;
+    padding-top: 10px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 20px;
+}
+#header #horizontalNav A:link
+{
+    padding-right: 5px;
+    padding-left: 5px;
+    font-weight: bold;
+    color: #FFF;
+    margin-right: 10px;
+    text-decoration: none;
+    height: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    line-height: 20px;
+}
+#header #horizontalNav A:active
+{
+    padding-right: 5px;
+    padding-left: 5px;
+    font-weight: bold;
+    color: #F2F3ED;
+    margin-right: 10px;
+    text-decoration: underline;
+    height: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    line-height: 20px;
+}
+#header #horizontalNav A:hover
+{
+    padding-right: 5px;
+    padding-left: 5px;
+    font-weight: bold;
+    color: #F2F3ED;
+    margin-right: 10px;
+    text-decoration: underline;
+    height: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    line-height: 20px;
+}
+#header #horizontalNav A:visited
+{
+    padding-right: 5px;
+    padding-left: 5px;
+    font-weight: bold;
+    color: #FFF;
+    margin-right: 10px;
+    text-decoration: none;
+    height: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    line-height: 20px;
+}
+#main
+{
+    margin-top: 0px;
+    margin-left: auto;
+    width: 1050px;
+    margin-right: auto;
+    position: relative;
+    background-color: #fff;
+    border-right-width: 10px;
+    border-bottom-width: 10px;
+    border-left-width: 10px;
+    border-top-style: none;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-color: #2d3931;
+    border-bottom-color: #2d3931;
+    border-left-color: #2d3931;
+    padding: 0px;
+}
+
+
+
+#main .leftNavigation
+{
+    margin-top: 15px;
+    margin-left: 0px;
+    width: 200px;
+    position: relative;
+    padding-top: 5px;
+    padding-right: 0px;
+    padding-bottom: 15px;
+    padding-left: 5px;
+    top: 0px;
+    left: 0px;
+}
+#main .leftNavigation A:link
+{
+    color: #2d3931;
+}
+#main .leftNavigation A:visited
+{
+    color: #2d3931;
+}
+
+#main #mainMainContent
+{
+    padding-left: 0px;
+    width: 800px;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    border-bottom-style: none;
+    position: relative;
+    top: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    padding-right: 0px;
+}
+
+#main #mainContent
+{
+    width: 690px;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    border-bottom-style: none;
+    position: relative;
+    margin: 0px;
+}
+
+#main #mainContent #searchBox
+{
+    height: 25px;
+    width: 235px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    color: #2D3931;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    text-align: right;
+}
+#main #mainContent #subTabs
+{
+    margin: 0px;
+    padding: 0px;
+    height: 25px;
+    width: 692px;
+    position: relative;
+    background-color: #8B9B71;
+}
+
+#main #mainContent #subTabs #btn1
+{
+    height: 17px;
+    padding-top: 3px;
+    padding-right: 5px;
+    padding-bottom: 0px;
+    padding-left: 5px;
+    position: relative;
+    text-align: center;
+    float: left;
+    margin-top: 5px;
+    margin-right: 10px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+#main #mainContent #subTabs #btn2
+{
+    height: 17px;
+    padding-top: 3px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    position: relative;
+    text-align: center;
+    margin-top: 5px;
+    margin-right: 10px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    float: left;
+}
+#main #mainContent #subTabs #btn3
+{
+    height: 17px;
+    padding-top: 3px;
+    padding-right: 5px;
+    padding-bottom: 0px;
+    padding-left: 5px;
+    position: relative;
+    text-align: center;
+    float: left;
+    margin-top: 5px;
+    margin-right: 10px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+#main #mainContent #subTabs #btn4
+{
+    height: 17px;
+    padding-top: 3px;
+    padding-right: 5px;
+    padding-bottom: 0px;
+    padding-left: 5px;
+    position: relative;
+    text-align: center;
+    float: left;
+    margin-top: 5px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+
+
+
+#main #mainContent #formi
+{
+    margin: 0px;
+    width: 690px;
+    position: relative;
+    background-color: #FFF;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-color: #8B9B71;
+    border-bottom-color: #8B9B71;
+    border-left-color: #8B9B71;
+    padding: 0px;
+    border-top-style: none;
+}
+
+#main #mainContent #formi #subFormi
+{
+    margin: 0px;
+    padding: 10px;
+}
+
+#main #mainContent #tabHolder
+{
+    margin: 0px;
+    padding: 0px;
+    height: 65px;
+    width: 690px;
+    position: relative;
+}
+#main #mainContent #tabHolder #button1
+{
+    padding: 0px;
+    height: 20px;
+    width: 200px;
+    position: absolute;
+    bottom: 0px;
+    margin: 0px;
+    left: 0;
+    float: left;
+}
+#main #mainContent #tabHolder #button2
+{
+    padding: 0px;
+    height: 20px;
+    width: 230px;
+    position: absolute;
+    margin: 0px;
+    left: 215px;
+    bottom: 0px;
+    float: left;
+}
+#main #mainContent #tabHolder #button3
+{
+    padding: 0px;
+    height: 20px;
+    width: 120px;
+    position: absolute;
+    left: 460px;
+    bottom: 0px;
+    margin: 0px;
+    float: left;
+}
+#kontroli
+{
+    padding: 0px;
+    height: 40px;
+    width: 680px;
+    margin: 0px;
+    position: relative;
+}
+
+#kontroli #button01
+{
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+#kontroli #button02
+{
+    padding: 0px;
+    width: 50px;
+    position: absolute;
+    left: 55px;
+    height: 40px;
+    top: 0px;
+}
+
+#kontroli #button03
+{
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: absolute;
+    left: 110px;
+    top: 0px;
+}
+#kontroli #button04
+{
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: absolute;
+    left: 165px;
+    top: 0px;
+}
+#kontroli #button05
+{
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: absolute;
+    left: 220px;
+    top: 0px;
+}
+
+#kontroli #button06
+{
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: absolute;
+    left: 275px;
+    top: 0px;
+}
+
+#kontroli #button07
+{
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: absolute;
+    left: 330px;
+    top: 0px;
+}
+
+#kontroli #button08
+{
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: absolute;
+    left: 385px;
+    top: 0px;
+}
+
+#kontroli #button09
+{
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: absolute;
+    left: 440px;
+    top: 0px;
+}
+
+#kontroli #button10
+{
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: absolute;
+    left: 495px;
+    top: 0px;
+}
+
+#kontroli #button11
+{
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: absolute;
+    left: 550px;
+    top: 0px;
+}
+
+.subTabsVehicle
+{
+    margin: 0px;
+    padding: 0px;
+    height: 25px;
+    width: 702px;
+    position: relative;
+    background-color: #8B9B71;
+}
+
+
+.SubTabButton
+{
+    height: 17px;
+    bottom: 0px;
+    color: #2D3931;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-left-width: 2px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: none;
+    border-left-style: solid;
+    border-top-color: #BDC6AE;
+    border-right-color: #BDC6AE;
+    border-left-color: #BDC6AE;
+    background-color: #BDC6AE;
+    font-size: 11px;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+.SubTabButton:hover
+{
+    background-color: #F2F3ED;
+    color: #2D3931;
+    margin: 0px;
+    padding-top: 0px;
+    padding-right: 5px;
+    padding-bottom: 0px;
+    padding-left: 5px;
+    border-top-color: #BDC6AE;
+    border-right-color: #BDC6AE;
+    border-left-color: #BDC6AE;
+}
+
+.SubTabButtonActive
+{
+    background-color: #FFF;
+    color: #2D3931;
+    text-align: center;
+    display: block;
+    height: 17px;
+    border: 1px solid #F2F3ED;
+    font-size: 11px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
+
+.leftBckg
+{
+    width: 190px;
+    background-color: #F2F3ED;
+    background-image: url(../img/leftNavBackg.jpg);
+    background-repeat: repeat-y;
+    border-right-width: 10px;
+    border-right-style: solid;
+    border-right-color: #2D3931;
+    min-height: 450px;
+}
+.light-background
+{
+    background-color: #FAFAF8;
+}
+.titles
+{
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2D3931;
+    margin-bottom: 3px;
+}
+
+.btnVehicle
+{
+    display: block;
+    background-image: url(../img/tab1a.gif);
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    text-decoration: none;
+    color: Navy;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    height: 20px;
+    width: 200px;
+}
+
+.btnVehicle_Clicked
+{
+    display: block;
+    background-image: url(../img/tab1.gif);
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    text-decoration: none;
+    color: Navy;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    height: 20px;
+    width: 200px;
+}
+
+.btnClient
+{
+    display: block;
+    background-image: url(../img/tab2a.gif);
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    text-decoration: none;
+    color: Navy;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    height: 20px;
+    width: 230px;
+}
+
+
+.btnClient_Clicked
+{
+    display: block;
+    background-image: url(../img/tab2.gif);
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    text-decoration: none;
+    color: Navy;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    height: 20px;
+    width: 230px;
+}
+
+.btnBill
+{
+    display: block;
+    background-image: url(../img/tab3a.gif);
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    text-decoration: none;
+    color: Navy;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    height: 20px;
+    width: 120px;
+}
+.btnBill_Clicked
+{
+    display: block;
+    background-image: url(../img/tab3.gif);
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    text-decoration: none;
+    color: Navy;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    height: 20px;
+    width: 120px;
+}
+.novZapis
+{
+    background-image: url(../img/novBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.novZapis:hover
+{
+    background-image: url(../img/novBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px -40px;
+    margin: 0px;
+    overflow: hidden;
+}
+.novZapis_Active
+{
+    background-image: url(../img/novBtnActive.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+
+.izmeni
+{
+    background-image: url(../img/izmeniBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.izmeni_Active
+{
+    background-image: url(../img/izmeniBtnActive.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.izmeni:hover
+{
+    background-image: url(../img/izmeniBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px -40px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+
+.brokerazi
+{
+    background-image: url(../img/brokeraziBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.brokerazi_Active
+{
+    background-image: url(../img/brokeraziBtnActive.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.brokerazi:hover
+{
+    background-image: url(../img/brokeraziBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px -40px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.stavki
+{
+    background-image: url(../img/StavkiBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.stavki_Active
+{
+    background-image: url(../img/StavkiBtnActive.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.stavki:hover
+{
+    background-image: url(../img/StavkiBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px -40px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+
+.pecati
+{
+    background-image: url(../img/pecatiBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.pecati_Active
+{
+    background-image: url(../img/pecatiBtnActive.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.pecati:hover
+{
+    background-image: url(../img/pecatiBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px -40px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.fkartica
+{
+    background-image: url(../img/fkarticaButton.png);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.fkartica_Active
+{
+    background-image: url(../img/fkarticaButtonActive.png);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.fkartica:hover
+{
+    background-image: url(../img/fkarticaButton.png);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px -40px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.promeniStatus
+{
+    background-image: url(../img/promeniStatusBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.promeniStatus_Active
+{
+    background-image: url(../img/promeniStatusActive.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.promeniStatus:hover
+{
+    background-image: url(../img/promeniStatusBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px -40px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+
+.pecatiAll
+{
+    background-image: url(../img/printAllBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.pecatiAll_Active
+{
+    background-image: url(../img/printAllBtnActive.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.pecatiAll:hover
+{
+    background-image: url(../img/printAllBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px -40px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.potvrdi
+{
+    background-image: url(../img/potvrdiBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.potvrdi_Active
+{
+    background-image: url(../img/potvrdiBtnActive.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.potvrdi:hover
+{
+    background-image: url(../img/potvrdiBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px -40px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.plakanja
+{
+    background-image: url(../img/plakjanjaBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.plakanja_Active
+{
+    background-image: url(../img/plakjanjaBtnActive.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.plakanja:hover
+{
+    background-image: url(../img/plakjanjaBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px -40px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.prodolzi
+{
+    background-image: url(../img/prodolziBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.prodolzi_Active
+{
+    background-image: url(../img/prodolziBtnActive.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.prodolzi:hover
+{
+    background-image: url(../img/prodolziBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px -40px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+
+.dokumenti
+{
+    background-image: url(../img/DokumentiBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.dokumenti_Active
+{
+    background-image: url(../img/DokumentiBtnActive.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.dokumenti:hover
+{
+    background-image: url(../img/DokumentiBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px -40px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+
+
+.izbrisi
+{
+    background-image: url(../img/IzbrisiBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.izbrisi_Active
+{
+    background-image: url(../img/IzbrisiBtnActive.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.izbrisi:hover
+{
+    background-image: url(../img/IzbrisiBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px -40px;
+    margin: 0px;
+    overflow: hidden;
+}
+.osvezi
+{
+    background-image: url(../img/osveziBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    overflow: hidden;
+}
+.osvezi_Active
+{
+    background-image: url(../img/osveziBtnActive.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    overflow: hidden;
+}
+.osvezi:hover
+{
+    background-image: url(../img/osveziBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px -40px;
+    margin: 0px;
+    overflow: hidden;
+}
+.izvestaj
+{
+    background-image: url(../img/izvestajBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.izvestaj_Active
+{
+    background-image: url(../img/izvestajBtnActive.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.izvestaj:hover
+{
+    background-image: url(../img/izvestajBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px -40px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.logNaIzmeni
+{
+    background-image: url(../img/btnLogNaIzmeni.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.logNaIzmeni_Active
+{
+    background-image: url(../img/btnLogNaIzmeniActive.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.logNaIzmeni:hover
+{
+    background-image: url(../img/btnLogNaIzmeni.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px -40px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.logNaPoseti
+{
+    background-image: url(../img/btnlogNaPoseti.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.logNaPoseti_Active
+{
+    background-image: url(../img/btnlogNaPosetiActive.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.logNaPoseti:hover
+{
+    background-image: url(../img/btnlogNaPoseti.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px -40px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.prebaraj
+{
+    background-image: url(../img/prebarajBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.prebaraj_Active
+{
+    background-image: url(../img/prebarajBtnActive.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.prebaraj:hover
+{
+    background-image: url(../img/prebarajBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px -40px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.pregled
+{
+    background-image: url(../img/pregledBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.pregled_Active
+{
+    background-image: url(../img/pregledBtnActive.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.pregled:hover
+{
+    background-image: url(../img/pregledBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px -40px;
+    margin: 0px;
+    overflow: hidden;
+}
+.storniraj
+{
+    background-image: url(../img/stornirajBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.storniraj_Active
+{
+    background-image: url(../img/stornirajBtnActive.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.storniraj:hover
+{
+    background-image: url(../img/stornirajBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px -40px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+
+.smetki
+{
+    background-image: url(../img/smetkiBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.smetki_Active
+{
+    background-image: url(../img/smetkiBtnActive.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.smetki:hover
+{
+    background-image: url(../img/smetkiBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px -40px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.dogovor
+{
+    background-image: url(../img/dogovorBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.dogovor_Active
+{
+    background-image: url(../img/dogovorBtnActive.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.dogovor:hover
+{
+    background-image: url(../img/dogovorBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px -40px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.prikaz
+{
+    background-image: url(../img/prikazBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.prikaz_Active
+{
+    background-image: url(../img/prikazBtnActive.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.prikaz:hover
+{
+    background-image: url(../img/prikazBtn.gif);
+    padding: 0px;
+    height: 40px;
+    width: 50px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 0px -40px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.padding10
+{
+    padding: 15px;
+    max-width: 707px;
+}
+.subTabs
+{
+    margin: 0px;
+    padding: 0px;
+    height: 25px;
+    width: 702px;
+    position: relative;
+    background-color: #8B9B71;
+}
+.paddingKontroli
+{
+    background-color: #F2F3ED;
+    padding: 10px;
+    margin-top: 20px;
+    border: 1px solid #2D3931;
+}
+.subTitles
+{
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2D3931;
+    margin-bottom: 10px;
+}
+.FormLable
+{
+    display: inline-block;
+    height: 20px;
+    margin-bottom: 5px;
+    padding-top: 0px;
+    padding-right: 15px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+.odjaviSe
+{
+    font-weight: bold;
+    text-decoration: none;
+    background-color: transparent;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+.odjaviSe:hover
+{
+    text-decoration: underline;
+    color: #933;
+}
+.collumn690
+{
+    width: 670px;
+    position: relative;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.collumnLeft
+{
+    margin: 0px;
+    padding: 0px;
+    float: left;
+    width: 40%;
+}
+.collumnRight
+{
+    margin: 0px;
+    padding-top: 20px;
+    clear: right;
+    float: right;
+    width: 55%;
+}
+.kopcinja
+{
+    margin-top: 180px;
+}
+.mvMainPanel
+{
+    background-color: #FAFAF8;
+    border-left: 1px solid Silver;
+    border-right: 1px solid Silver;
+    border-top: 1px solid Silver;
+    border-bottom: 1px solid Silver;
+}
+.PacketButton
+{
+    border-top: 1px solid Silver;
+    border-left: 1px solid Silver;
+    border-right: 1px solid Silver;
+    border-bottom: 1px solid Silver;
+    background-color: Silver;
+    padding-right: 5px;
+    margin-left: 3px;
+    margin-right: 3px;
+    color: White;
+}
+.PacketButton:hover
+{
+    font-style: italic;
+}
+.PacketButton_Active
+{
+    border-top: 1px solid Silver;
+    border-left: 1px solid Silver;
+    border-right: 1px solid Silver;
+    border-bottom: 1px solid #FAFAF8;
+    background-color: #FAFAF8;
+    padding-right: 5px;
+    font-weight: bold;
+    margin-left: 3px;
+    margin-right: 3px;
+    color: Black;
+}
+
+.border1px
+{
+    border: 1px solid Silver;
+    width: 400px;
+}
+
+.border1px_Policy
+{
+    border: 1px solid Silver;
+}
+
+.PacketOut
+{
+    border: 1px solid Silver;
+    padding: 5px;
+}
+
+/* **************** MAIN POLICY DOCUMENT PAGE **************** */
+/* *********************************************************** */
+.clear
+{
+    clear: both;
+}
+.sec_policy
+{
+    width: 98%;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.sec_rates
+{
+    width: 99.55%;
+    border-top: 1px solid #e1e1e1;
+}
+.policy_label_td
+{
+    min-width: 134px;
+    max-width: 134px;
+    max-height: 15px;
+}
+.policy_field_td
+{
+    max-width: 197px;
+    min-width: 197px;
+    max-height: 15px;
+}
+.policy_button_td
+{
+    max-width: 29px;
+    min-width: 29px;
+    max-height: 15px;
+}
+.tekstPole
+{
+    padding: 3px;
+    border: solid 1px #e1e1e1;
+    outline: 0;
+    background: #FFFFFF;
+    max-width: 140px;
+    min-width: 140px;
+}
+
+.tekstPoleSmall
+{
+    padding: 3px;
+    border: solid 1px #e1e1e1;
+    outline: 0;
+    background: #FFFFFF;
+    width: 80px;
+}
+
+.tekstPoleArea
+{
+    width: 400px;
+    max-width: 400px;
+    height: 150px;
+    line-height: 150%;
+}
+
+.tekstPole:hover
+{
+    border-color: #c0c0c0;
+}
+
+.tekstPole:focus
+{
+    border-color: #c0c0c0;
+}
+
+.tekstPoleArea:focus
+{
+    border-color: #c0c0c0;
+}
+
+.checkBox
+{
+}
+
+.checkBox:focus
+{
+}
+
+.checkBox:hover
+{
+}
+
+.select
+{
+    padding: 2px 3px 2px 3px;
+    border: solid 1px #e1e1e1;
+    outline: 0;
+    width: 148px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.select .ist
+{
+}
+
+.selectSmall
+{
+    padding: 3px;
+    border: solid 1px #e1e1e1;
+    outline: 0;
+    width: 48px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.selectSmall:hover
+{
+    border-color: #c0c0c0;
+}
+
+.select:hover
+{
+    border-color: #c0c0c0;
+}
+
+.select .normal
+{
+    padding: 3px;
+    border: solid 1px #e1e1e1;
+    outline: 0;
+    width: 148px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.select .normal:hover
+{
+    border-color: #c0c0c0;
+}
+
+.normal_button
+{
+    width: auto;
+    padding: 3px 7px;
+    background: #9fc5dd;
+    border: solid 1px #e1e1e1;
+    font-size: 14px;
+    color: #FFFFFF;
+    margin: 1px 2px;
+}
+.normal_button:hover
+{
+    border-color: #c0c0c0;
+    cursor: pointer;
+    background-color: #a3cde8;
+}
+.gray_button
+{
+    width: auto;
+    padding: 3px 7px;
+    background: #b7b7b7;
+    border: solid 1px #e1e1e1;
+    font-size: 14px;
+    color: #FFFFFF;
+    margin: 1px 2px;
+}
+.gray_button:hover
+{
+    border-color: #c0c0c0;
+    cursor: pointer;
+    background-color: #c9c9c9;
+}
+
+.submit
+{
+    width: auto;
+    padding: 3px 7px;
+    background: #5d983c;
+    border: solid 1px #e1e1e1;
+    font-size: 14px;
+    color: #FFFFFF;
+    margin: 1px 2px;
+}
+.submit:hover
+{
+    border-color: #c0c0c0;
+    cursor: pointer;
+    background-color: #77b753;
+}
+
+
+
+.cancel
+{
+    width: auto;
+    padding: 3px 7px;
+    background: #983c3c;
+    border: solid 1px #e1e1e1;
+    font-size: 14px;
+    color: #FFFFFF;
+    margin: 1px 2px;
+}
+.cancel:hover
+{
+    border-color: #c0c0c0;
+    cursor: pointer;
+    background-color: #a74242;
+}
+.small_button
+{
+    min-width: 30px !important;
+    max-width: 30px !important;
+    min-height: 24px;
+    max-height: 24px;
+}
+
+.special_field
+{
+    width: 107px;
+}
+
+.checkBoxList {
+  max-height:100px;
+  height:auto !important;
+  height:100px;
+}
+
+.scrollingControlContainer
+{
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.scrollingCheckBoxList
+{
+    border: 1px #808080 solid;
+    margin: 5px 5px 5px 5px;
+    height: 200px;
+}

@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ASUCBroker" Class="LoggingDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=192.168.10.58;Initial Catalog=ASUCBroker;Persist Security Info=True;User ID=bitola" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ASUCBrokerConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.DBUpdatedTables" Member="DBUpdatedTables">
+    <Type Name="DBUpdatedTable">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SessionID" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="TableName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="TimeOfUpdate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DBAccessedPageActionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="DBUpdatedTable_DBActivity" Member="DBActivities" ThisKey="ID" OtherKey="DBUpdatedTableID" Type="DBActivity" />
+      <Association Name="DBUpdatedTable_DBUpdatedTableField" Member="DBUpdatedTableFields" ThisKey="ID" OtherKey="DBUpdatedTableID" Type="DBUpdatedTableField" />
+      <Association Name="DBAccessedPageAction_DBUpdatedTable" Member="DBAccessedPageAction" ThisKey="DBAccessedPageActionID" OtherKey="ID" Type="DBAccessedPageAction" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DBAccessedPages" Member="DBAccessedPages">
+    <Type Name="DBAccessedPage">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IpAddress" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="TimeOfAccess" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SessionID" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="RelativeUrl" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
+      <Association Name="DBAccessedPage_DBAccessedPageAction" Member="DBAccessedPageActions" ThisKey="ID" OtherKey="DbAccesedPagesID" Type="DBAccessedPageAction" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DBActivities" Member="DBActivities">
+    <Type Name="DBActivity">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ActivityTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Query" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SessionID" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="AdditionalInfo" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DBUpdatedTableID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TableName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Association Name="DBActivity_DBActivityParameter" Member="DBActivityParameters" ThisKey="ID" OtherKey="DBActivityID" Type="DBActivityParameter" />
+      <Association Name="DBUpdatedTable_DBActivity" Member="DBUpdatedTable" ThisKey="DBUpdatedTableID" OtherKey="ID" Type="DBUpdatedTable" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DBActivityParameters" Member="DBActivityParameters">
+    <Type Name="DBActivityParameter">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DBActivityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Association Name="DBActivity_DBActivityParameter" Member="DBActivity" ThisKey="DBActivityID" OtherKey="ID" Type="DBActivity" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DBLoggingControl" Member="DBLoggingControls">
+    <Type Name="DBLoggingControl">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IgnoreNext" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DBLoggingIgnoredTableActivities" Member="DBLoggingIgnoredTableActivities">
+    <Type Name="DBLoggingIgnoredTableActivity">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DbLoggingIgnoredTableID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ActivityTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="DBLoggingIgnoredTable_DBLoggingIgnoredTableActivity" Member="DBLoggingIgnoredTable" ThisKey="DbLoggingIgnoredTableID" OtherKey="ID" Type="DBLoggingIgnoredTable" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DBLoggingIgnoredTables" Member="DBLoggingIgnoredTables">
+    <Type Name="DBLoggingIgnoredTable">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TableName" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Association Name="DBLoggingIgnoredTable_DBLoggingIgnoredTableActivity" Member="DBLoggingIgnoredTableActivities" ThisKey="ID" OtherKey="DbLoggingIgnoredTableID" Type="DBLoggingIgnoredTableActivity" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DBUpdatedTableFields" Member="DBUpdatedTableFields">
+    <Type Name="DBUpdatedTableField">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DBUpdatedTableID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FieldName" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="OldValue" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Association Name="DBUpdatedTable_DBUpdatedTableField" Member="DBUpdatedTable" ThisKey="DBUpdatedTableID" OtherKey="ID" Type="DBUpdatedTable" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ViewDBAccessedPageActions" Member="ViewDBAccessedPageActions">
+    <Type Name="ViewDBAccessedPageAction">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DbAccesedPagesID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ControlID" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="TimeAccessed" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Action" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="ControlNamingContainer" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ControlUniqueID" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="RelativeUrl" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="TableName" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="TimeOfUpdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ViewDBUsersActivities" Member="ViewDBUsersActivities">
+    <Type Name="ViewDBUsersActivity">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IpAddress" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RelativeUrl" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="TimeVisit" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SessionID" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ControlID" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ControlNamingContainer" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ControlUniqueID" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ActionTextName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ViewDBAccessedPages" Member="ViewDBAccessedPages">
+    <Type Name="ViewDBAccessedPage">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IpAddress" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="TimeOfAccess" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SessionID" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="RelativeUrl" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ViewDBActivities" Member="ViewDBActivities">
+    <Type Name="ViewDBActivity">
+      <Column Name="ViewDBActivitiesID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ActivityTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Query" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SessionID" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="AdditionalInfo" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DBUpdatedTableID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="TableName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ViewDBActivitiesBase" Member="ViewDBActivitiesBases">
+    <Type Name="ViewDBActivitiesBase">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SessionID" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ViewDBActivitiesUpdatedTableFields" Member="ViewDBActivitiesUpdatedTableFields">
+    <Type Name="ViewDBActivitiesUpdatedTableField">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ActivityTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Query" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SessionID" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="AdditionalInfo" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DBUpdatedTableID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TableName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="DbUpdatedTableName" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="TimeOfUpdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FieldName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="OldValue" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ViewDBActivityParameters" Member="ViewDBActivityParameters">
+    <Type Name="ViewDBActivityParameter">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ActivityTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Query" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SessionID" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="AdditionalInfo" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TableName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="DBActivityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ViewDBUpdatedTables" Member="ViewDBUpdatedTables">
+    <Type Name="ViewDBUpdatedTable">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SessionID" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="TableName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="TimeOfUpdate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FieldName" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="OldValue" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="DBAccessedPageActionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DBTranslatedColumnNames" Member="DBTranslatedColumnNames">
+    <Type Name="DBTranslatedColumnName">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="NameMKD" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ViewDBLoggingByPageWithTableID" Member="ViewDBLoggingByPageWithTableIDs">
+    <Type Name="ViewDBLoggingByPageWithTableID">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DbAccesedPagesID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ControlID" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="TimeAccessed" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Action" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="ControlNamingContainer" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ControlUniqueID" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="RelativeUrl" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SessionID" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="TableName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="TimeOfUpdate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FieldName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="OldValue" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DBAccessedPageActions" Member="DBAccessedPageActions">
+    <Type Name="DBAccessedPageAction">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DbAccesedPagesID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ControlID" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="TimeAccessed" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Action" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="ControlNamingContainer" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ControlUniqueID" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="RelativeUrl" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="OpenedFormID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="DBAccessedPageAction_DBUpdatedTable" Member="DBUpdatedTables" ThisKey="ID" OtherKey="DBAccessedPageActionID" Type="DBUpdatedTable" />
+      <Association Name="DBAccessedPage_DBAccessedPageAction" Member="DBAccessedPage" ThisKey="DbAccesedPagesID" OtherKey="ID" Type="DBAccessedPage" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ViewDBOtvoreniEdits" Member="ViewDBOtvoreniEdits">
+    <Type Name="ViewDBOtvoreniEdit">
+      <Column Name="DbAccesedPagesID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ControlID" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="TimeAccessed" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Action" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="ControlNamingContainer" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="RelativeUrl" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="ControlUniqueID" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="OpenedFormID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

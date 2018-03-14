@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 15, 16.5" name="Logging">
+  <DataContextMoniker Name="/LoggingDataContext" />
+  <nestedChildShapes>
+    <classShape Id="a84a020e-324a-4989-a6c4-1cf4853ebdae" absoluteBounds="6.25, 2.625, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/LoggingDataContext/DBUpdatedTable" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1abcd141-a929-4b4f-b9e4-8bde74d9e240" absoluteBounds="6.265, 3.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e3ff29ec-ee0e-49bf-9861-e05a02d69dc6" absoluteBounds="0.875, 3.5, 2, 2.155499674479167">
+      <DataClassMoniker Name="/LoggingDataContext/DBAccessedPage" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bc4060fa-d1b0-46d3-adc9-dd973480dabb" absoluteBounds="0.89, 3.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0f94e634-7784-4c99-ac53-34e195f46657" absoluteBounds="9, 3.625, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/LoggingDataContext/DBActivity" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ef9781b4-b58d-4461-ac9d-817767b9d6be" absoluteBounds="9.015, 4.085, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="677bf56c-2fe6-43b4-acab-7c5340889756" absoluteBounds="11.75, 4.125, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/LoggingDataContext/DBActivityParameter" />
+      <nestedChildShapes>
+        <elementListCompartment Id="006d7fc8-4b53-456e-84fd-223dbc77f3dc" absoluteBounds="11.765, 4.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0e4478c9-6da9-402b-9d43-771ed507b3ae" absoluteBounds="8.875, 6.25, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/LoggingDataContext/DBLoggingControl" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2cb817d6-96da-47fd-88c0-7dc65720c1c9" absoluteBounds="8.89, 6.7100000000000009, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2b7ff1a4-fa8b-4773-90ef-7c4694a57ccc" absoluteBounds="3.5, 5.875, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/LoggingDataContext/DBLoggingIgnoredTableActivity" />
+      <nestedChildShapes>
+        <elementListCompartment Id="aa918eee-a51b-4656-9eb5-ec4fe59338dc" absoluteBounds="3.515, 6.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5171307d-fe16-4fbb-b0fa-349d0b97db79" absoluteBounds="0.75, 6, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/LoggingDataContext/DBLoggingIgnoredTable" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9e7950a1-cc42-4e98-ae94-77a64a56c3f7" absoluteBounds="0.765, 6.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="379e5e02-7e91-4fae-8b13-ca34602be5e4" absoluteBounds="9, 1.125, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/LoggingDataContext/DBUpdatedTableField" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7bb9dab0-92e6-4661-a9bf-b2d911d06c48" absoluteBounds="9.015, 1.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.25 : 4.10659912109375); (9 : 4.10659912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LoggingDataContext/DBUpdatedTable/DBUpdatedTable_DBActivity" />
+      <nodes>
+        <classShapeMoniker Id="a84a020e-324a-4989-a6c4-1cf4853ebdae" />
+        <classShapeMoniker Id="0f94e634-7784-4c99-ac53-34e195f46657" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 4.81814697265625); (11.75 : 4.81814697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LoggingDataContext/DBActivity/DBActivity_DBActivityParameter" />
+      <nodes>
+        <classShapeMoniker Id="0f94e634-7784-4c99-ac53-34e195f46657" />
+        <classShapeMoniker Id="677bf56c-2fe6-43b4-acab-7c5340889756" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 6.59699625651042); (3.5 : 6.59699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LoggingDataContext/DBLoggingIgnoredTable/DBLoggingIgnoredTable_DBLoggingIgnoredTableActivity" />
+      <nodes>
+        <classShapeMoniker Id="5171307d-fe16-4fbb-b0fa-349d0b97db79" />
+        <classShapeMoniker Id="2b7ff1a4-fa8b-4773-90ef-7c4694a57ccc" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 2.62650915249399); (8.625 : 2.25150915249399); (8.625 : 3.27089680989583); (9 : 2.89589680989583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LoggingDataContext/DBUpdatedTable/DBUpdatedTable_DBUpdatedTableField" />
+      <nodes>
+        <classShapeMoniker Id="a84a020e-324a-4989-a6c4-1cf4853ebdae" />
+        <classShapeMoniker Id="379e5e02-7e91-4fae-8b13-ca34602be5e4" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="768583f9-bdce-4305-9b67-a9721b6517d3" absoluteBounds="0.75, 8.75, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/LoggingDataContext/ViewDBAccessedPageAction" />
+      <nestedChildShapes>
+        <elementListCompartment Id="be0164f3-5f7a-4494-bacb-60d895667899" absoluteBounds="0.765, 9.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="74fb9fc4-8681-404f-b51c-cc5180857ef1" absoluteBounds="3.75, 8.75, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/LoggingDataContext/ViewDBUsersActivity" />
+      <nestedChildShapes>
+        <elementListCompartment Id="45f64dc2-680c-4242-9fe6-a6437074a153" absoluteBounds="3.765, 9.21, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="222a138b-9f47-4704-8e84-7eb949b04487" absoluteBounds="6.75, 9.75, 2, 2.5401025390624987">
+      <DataClassMoniker Name="/LoggingDataContext/ViewDBAccessedPage" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d21d2bf8-dbcf-43db-8d52-4221fbdcd51b" absoluteBounds="6.765, 10.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="52068fce-b65d-4955-8161-7eeecf9953de" absoluteBounds="9.75, 7.75, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/LoggingDataContext/ViewDBActivity" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dd72aaba-b0a3-4eb6-b280-c207bd782bb3" absoluteBounds="9.765, 8.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f57a4b26-c1ba-4cda-a41b-2b2f2dbf3358" absoluteBounds="9.75, 11.75, 2, 1.9631982421874987">
+      <DataClassMoniker Name="/LoggingDataContext/ViewDBActivitiesBase" />
+      <nestedChildShapes>
+        <elementListCompartment Id="34104901-efec-4bde-9dce-8203e4eb7f8b" absoluteBounds="9.765, 12.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="57ce8abd-8587-4725-ba7b-608002dfbe1e" absoluteBounds="0.75, 12.75, 2, 3.5016097005208309">
+      <DataClassMoniker Name="/LoggingDataContext/ViewDBActivitiesUpdatedTableField" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2058188d-50dd-4cf4-ab04-ad9563346b7f" absoluteBounds="0.765, 13.21, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="25391b9f-0de3-40fa-815f-2f41ede91008" absoluteBounds="12.75, 6.75, 2, 2.9247054036458318">
+      <DataClassMoniker Name="/LoggingDataContext/ViewDBActivityParameter" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4c3c3e07-e64b-4d8b-b360-6a742c85b36c" absoluteBounds="12.765, 7.21, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6a6d96a6-471c-4e22-924a-d2a6b21ad9d6" absoluteBounds="12.75, 0.75, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/LoggingDataContext/ViewDBUpdatedTable" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ece38f92-6a6d-45e4-9102-2410e6341639" absoluteBounds="12.765, 1.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="eba26196-4fb1-4919-a9b6-3e33f15e98c6" absoluteBounds="4.75, 0.5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/LoggingDataContext/DBTranslatedColumnName" />
+      <nestedChildShapes>
+        <elementListCompartment Id="96d3624e-64f8-41ee-b8b7-1529f2cf951a" absoluteBounds="4.765, 0.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2895b375-ca2f-4c70-89ee-f2d6abc907ff" absoluteBounds="6, 4.875, 2, 3.8862125651041666">
+      <DataClassMoniker Name="/LoggingDataContext/ViewDBLoggingByPageWithTableID" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d86eb1dc-145d-4e24-a609-160d0552303b" absoluteBounds="6.015, 5.335, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cccdb5dc-475c-4da3-97b7-3c60030d6230" absoluteBounds="3.375, 2.375, 2, 2.5401025390625">
+      <DataClassMoniker Name="/LoggingDataContext/DBAccessedPageAction" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f59887d8-1ac4-4af8-b70a-d1bbbc4dae12" absoluteBounds="3.3899999999999997, 2.835, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.375 : 3.94155110677083); (6.25 : 3.94155110677083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LoggingDataContext/DBAccessedPageAction/DBAccessedPageAction_DBUpdatedTable" />
+      <nodes>
+        <classShapeMoniker Id="cccdb5dc-475c-4da3-97b7-3c60030d6230" />
+        <classShapeMoniker Id="a84a020e-324a-4989-a6c4-1cf4853ebdae" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.875 : 4.20755126953125); (3.375 : 4.20755126953125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LoggingDataContext/DBAccessedPage/DBAccessedPage_DBAccessedPageAction" />
+      <nodes>
+        <classShapeMoniker Id="e3ff29ec-ee0e-49bf-9861-e05a02d69dc6" />
+        <classShapeMoniker Id="cccdb5dc-475c-4da3-97b7-3c60030d6230" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="c8aef3fb-4141-4162-89ff-9bfb6d7187d1" absoluteBounds="1, 0.5, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/LoggingDataContext/ViewDBOtvoreniEdit" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b33a470b-4a97-4046-ad6b-151fe764f538" absoluteBounds="1.0149999999999997, 0.96, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

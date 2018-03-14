@@ -1,0 +1,96 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<%@ Register Namespace="Broker.Controllers.Tree" TagPrefix="tree" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+
+    <%--<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.min.js">
+    </script>
+
+    <script type="text/javascript">
+        $(function() {
+            $('input:text:first').focus();
+            var $inp = $('input:text');
+            $inp.bind('keydown', function(e) {
+                //var key = (e.keyCode ? e.keyCode : e.charCode);
+                var key = e.which;
+                if (key == 13) {
+                    e.preventDefault();
+                    var nxtIdx = $inp.index(this) + 1;
+                    $(":input:text:eq(" + nxtIdx + ")").focus();
+                }
+            });
+        });
+    </script>--%>
+
+    <link href="_assets/css/StyleSheet.css" type="text/css" rel="Stylesheet" media="screen" />
+    <link href="_assets/css/master.css" type="text/css" rel="Stylesheet" media="screen" />
+    <link href="_assets/css/grid.css" type="text/css" rel="Stylesheet" media="screen" />
+    <link href="_assets/css/pager.css" type="text/css" rel="Stylesheet" media="screen" />
+    <link href="_assets/css/ReportDivStyleSheet.css" type="text/css" rel="Stylesheet"
+        media="screen" />
+    <link href="_assets/css/tabeliFrame.css" type="text/css" rel="Stylesheet" media="screen" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <div id="header">
+        <div id="left">
+            <asp:Image runat="server" ID="imgLogoOnMaster" ImageUrl="~/_assets/img/imgInApp/euromakLogoMedium.png"
+                Width="42px" Height="42px" />
+            <div id="text">
+                АСУЦ Брокер
+                <%--<asp:Label ID="lblBrokerHouseName" runat="server" Text=""></asp:Label>--%>
+            </div>
+        </div>
+        <div id="odjava">
+            <asp:Button ID="btnLogout" runat="server" Text="Одјави се" OnClick="btnLogout_Click"
+                CausesValidation="false" UseSubmitBehavior="false" CssClass="odjaviSe" /></div>
+        <div id="horizontalNav">
+            <div style="float: left;">
+                <asp:Label ID="lblPageTitle" Text="Апликација за брокерско работење" runat="server"
+                    Font-Bold="true"></asp:Label>
+            </div>
+            <div style="float: right; margin-right: 10px;">
+                <asp:Label ID="lblUserInfo" Text="Корисник" runat="server" Font-Bold="true"></asp:Label>
+            </div>
+        </div>
+    </div>
+    <div id="main">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" height="450px">
+            <tr>
+                <td class="leftBckg" valign="top">
+                    <div class="leftNavigation">
+                        <asp:TreeView ID="NBOTree" runat="server" DataSourceID="NBOTreeDataSource1" OnTreeNodeExpanded="NBOTree_TreeNodeExpanded"
+                            OnTreeNodeDataBound="NBOTree_TreeNodeDataBound" OnSelectedNodeChanged="NBOTree_SelectedNodeChanged"
+                            OnDataBound="NBOTree_DataBound" NodeIndent="10" CollapseImageUrl="~/_assets/img/Minus.gif"
+                            ExpandImageUrl="~/_assets/img/plus.gif" OnTreeNodeCheckChanged="NBOTree_TreeNodeCheckChanged">
+                            <HoverNodeStyle Font-Underline="False" />
+                            <SelectedNodeStyle Font-Bold="False" />
+                            <DataBindings>
+                                <asp:TreeNodeBinding DataMember="WebPage" TextField="Title" NavigateUrlField="AbsoluteUrl"
+                                    ImageUrlField="RelativeImageUrl" PopulateOnDemand="true" />
+                            </DataBindings>
+                        </asp:TreeView>
+                        <tree:NBOTreeDataSource ID="NBOTreeDataSource1" TypeName="WebPage" runat="server"
+                            EnableViewState="true">
+                        </tree:NBOTreeDataSource>
+                    </div>
+                </td>
+                <td valign="top">
+                    <div class="padding10">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    </form>
+</body>
+</html>

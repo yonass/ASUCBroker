@@ -1,0 +1,313 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Services;
+using Broker.DataAccess;
+using System.Reflection;
+
+/// <summary>
+/// Summary description for WebServiceReceiveFromNBO
+/// </summary>
+[WebService(Namespace = "http://tempuri.org/")]
+[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+// To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
+// [System.Web.Script.Services.ScriptService]
+public class WebServiceReceiveFromNBO : System.Web.Services.WebService {
+
+    public class PolicyInformation {
+        public string PolicyNumber;
+        public string PreviousPolicyNumber;
+        public DateTime StartDate;
+        public DateTime EndDate;
+        public DateTime ApplicationDate;
+        public decimal PremiumValue;
+        public decimal TotalValue;
+        public decimal WindshieldValue;
+        public decimal PolicyPositivePaymentsValue;
+        public decimal PolicyNegativePaymentsValue;
+        public string ClientName;
+        public string ClientAddress;
+        public string ClientPostalCode;
+        public string ClientEMBG;
+        public string ClientPhoneNumber;
+        public string OwnerName;
+        public string OwnerAddress;
+        public string OwnerPostalCode;
+        public string OwnerEMBG;
+        public int PolicyDays;
+        public string StartHour;
+        public string EndHour;
+        public decimal ReziskiDodatok;
+        public int NumberOfRates;
+        public string PaymentDinamics;
+        public string BranchCode;
+        public string UserName;
+        public string SellinPlace;
+        public DateTime TarrifDate;
+        public string LockNumber;
+        public string RegistrationNumber;
+        public string PremiumGroupCode;
+        public decimal Bonus;
+        public decimal PremiumWithBonus;
+        public string FirstExtraPaymentCode;
+        public string SecondExtraPaymentCode;
+        public string ThirdExtraPaymentCode;
+        public string FourthExtraPaymentCode;
+        public decimal FirstExtraPaymentValue;
+        public decimal SecondExtraPaymentValue;
+        public decimal ThirdExtraPaymentValue;
+        public decimal FourthExtraPaymentValue;
+        public string FirstNegativeExtraPaymentCode;
+        public string SecondNegativeExtraPaymentCode;
+        public string ThirdNegativeExtraPaymentCode;
+        public char FirstSektor;
+        public decimal FirstNegativeExtraPaymentValue;
+        public decimal SecondNegativeExtraPaymentValue;
+        public decimal ThirdNegativeExtraPaymentValue;
+        public string InsuranceType;
+        public string InsuranceCoverageCode;
+        public char AccidentRateCode;
+        public char DeathCrippleRateCode;
+        public decimal DeathCrippleRateDeathCoverage;
+        public decimal DeathCrippleRateCrippleCoverage;
+        public int AccidentRatePassengers;
+        public decimal AccidentRatePassengersValue;
+        public string WindshieldRateCode;
+        public decimal WindshieldRateValue;
+        public decimal TaxPercentage;
+        public decimal TaxValue;
+        //public decimal TotalValue;
+        public string VehicleTypeCode;
+        public string VehicleBrand;
+        public string VehicleModel;
+        public string VehicleChassisNumber;
+        public decimal MainTechnicalDescriptionValue;
+        public int ManyfactureYear;
+        public decimal VehiclePower;
+        public decimal VehicleVolume;
+        public decimal VehicleCarriage;
+        public int VehicleSeatsNumber;
+        public int VehiclePassengersNumber;
+        public string Lizing;
+        public int SecondSektor;
+        public int ChangeCode;
+        public DateTime? DateOfChange;
+        public int SpecialInsuranceCode;
+
+    }
+
+
+    public class GreenCardInformation
+    {
+        public string GreenCardNumber;
+        public string PolicyNumber;
+        public char FirstSektor;
+        public string OwnerEMBG;
+        public string OwnerName;
+        public string OwnerAddress;
+        public string OwnerPostalCode;
+        public DateTime StartDate;
+        public DateTime EndDate;
+        public string RegistrationNumber;
+        public string VehicleTypeCode;
+        public string VehicleBrand;
+        public decimal TotalValue;
+        public DateTime ApplicationDate;
+        public string BranchCode;
+        public string UserName;
+        public string LockNumber;
+        public char GreenCardCategory;
+        public int Static;
+        public int SecondSektor;
+        public int ChangeCode;
+        public DateTime? DateOfChange;
+        public string ParentGreenCardNumber;
+    }
+
+    
+
+    public WebServiceReceiveFromNBO () {
+
+        //Uncomment the following line if using designed components 
+        //InitializeComponent(); 
+    }
+
+    [WebMethod]
+    public string HelloWorld() {
+        return "Hello World";
+    }
+
+    [WebMethod]
+    public PolicyInformation Request(int nboCompanyID, string insuranceSubTypeCode)
+    {
+        PolicyInformation pi = new PolicyInformation();
+        return pi;
+    }
+
+    [WebMethod]
+    public GreenCardInformation RequestGreenCard(int nboCompanyID, string insuranceSubTypeCode) {
+        GreenCardInformation gi = new GreenCardInformation();
+        return gi;
+    }
+
+    //[WebMethod]
+    //public Dictionary<string, string> Request(int nboCompanyID, string insuranceSubTypeCode)
+    //{
+    //    Dictionary<string, string> policyInformations = new Dictionary<string, string>();
+    //    PolicyInformation pi = new PolicyInformation();
+    //    Type t = pi.GetType();
+    //    PropertyInfo[] p = t.GetProperties();
+    //    foreach (PropertyInfo pInfo in p)
+    //    {
+    //        policyInformations.Add(pInfo.Name, string.Empty);
+    //    }
+    //    return policyInformations;
+    //}
+
+    //[WebMethod]
+    //public void InsertTemporaryPolicy(Dictionary<string, string> dictionary)
+    //{
+    //    TemporaryPolicy newTP = new TemporaryPolicy();
+    //    newTP.PolicyNumber = dictionary["PolicyNumber"];
+    //    newTP.PremiumValue = Convert.ToDecimal(dictionary["PremiumValue"]);
+    //    newTP.ApplicationDate = Convert.ToDateTime(dictionary["ApplicationDate"]);
+    //    newTP.ClientAddress = dictionary["ClientAddress"];
+    //    newTP.ClientName = dictionary["ClientName"];
+    //    newTP.EndDate = Convert.ToDateTime(dictionary["EndDate"]);
+    //    newTP.StartDate = Convert.ToDateTime(dictionary["StartDate"]);
+    //    newTP.WindshieldValue = Convert.ToDecimal(dictionary["WindshieldValue"]);
+    //    newTP.Insert();
+    //}
+
+    [WebMethod]
+    public bool InsertTemporaryPolicy(object o)
+    {
+        try {
+            PolicyInformation pi = (PolicyInformation)o;
+            //TemporaryPolicy newTP = (TemporaryPolicy)o;
+            TemporaryPolicy newTP = new TemporaryPolicy();
+            newTP.AccidentRateCode = pi.AccidentRateCode;
+            newTP.AccidentRatePassengers = pi.AccidentRatePassengers;
+            newTP.AccidentRatePassengersValue = pi.AccidentRatePassengersValue;
+            newTP.ApplicationDate = pi.ApplicationDate;
+            newTP.Bonus = pi.Bonus;
+            newTP.BranchCode = pi.BranchCode;
+            newTP.ChangeCode = pi.ChangeCode;
+            newTP.ClientAddress = pi.ClientAddress;
+            newTP.ClientEMBG = pi.ClientEMBG;
+            newTP.ClientName = pi.ClientName;
+            newTP.ClientPhoneNumber = pi.ClientPhoneNumber;
+            newTP.ClientPostalCode = pi.ClientPostalCode;
+            newTP.DateOfChange = pi.DateOfChange;
+            newTP.DeathCrippleRateCode = pi.DeathCrippleRateCode;
+            newTP.DeathCrippleRateCrippleCoverage = pi.DeathCrippleRateCrippleCoverage;
+            newTP.DeathCrippleRateDeathCoverage = pi.DeathCrippleRateDeathCoverage;
+            newTP.EndDate = pi.EndDate;
+            newTP.EndHour = pi.EndHour;
+            newTP.FirstExtraPaymentCode = pi.FirstExtraPaymentCode;
+            newTP.FirstExtraPaymentValue = pi.FirstExtraPaymentValue;
+            newTP.FirstNegativeExtraPaymentCode = pi.FirstNegativeExtraPaymentCode;
+            newTP.FirstNegativeExtraPaymentValue = pi.FirstNegativeExtraPaymentValue;
+            newTP.FirstSektor = pi.FirstSektor;
+            newTP.FourthExtraPaymentCode = pi.FourthExtraPaymentCode;
+            newTP.FourthExtraPaymentValue = pi.FourthExtraPaymentValue;
+            newTP.InsuranceCoverageCode = pi.InsuranceCoverageCode;
+            newTP.InsuranceType = pi.InsuranceType;
+            newTP.Lizing = pi.Lizing;
+            newTP.LockNumber = pi.LockNumber;
+            newTP.MainTechnicalDescriptionValue = pi.MainTechnicalDescriptionValue;
+            newTP.ManyfactureYear = pi.ManyfactureYear;
+            newTP.NumberOfRates = pi.NumberOfRates;
+            newTP.OwherAddress = pi.OwnerAddress;
+            newTP.OwnerEMBG = pi.OwnerEMBG;
+            newTP.OwnerName = pi.OwnerName;
+            newTP.OwnerPostalCode = pi.OwnerPostalCode;
+            newTP.PaymentDinamics = pi.PaymentDinamics;
+            newTP.PolicyDays = pi.PolicyDays;
+            newTP.PolicyNumber = pi.PolicyNumber;
+            newTP.PremiumGroupCode = pi.PremiumGroupCode;
+            newTP.PremiumValue = pi.PremiumValue;
+            newTP.PremiumWithBonus = pi.PremiumWithBonus;
+            if (pi.PreviousPolicyNumber == null) {
+                newTP.PreviousPolicyNumber = string.Empty;
+            } else {
+                newTP.PreviousPolicyNumber = pi.PreviousPolicyNumber;
+            }
+            newTP.RegistrationNumber = pi.RegistrationNumber;
+            newTP.ReziskiDodatok = pi.ReziskiDodatok;
+            newTP.SecondExtraPaymentCode = pi.SecondExtraPaymentCode;
+            newTP.SecondExtraPaymentValue = pi.SecondExtraPaymentValue;
+            newTP.SecondNegativeExtraPaymentCode = pi.SecondNegativeExtraPaymentCode;
+            newTP.SecondNegativeExtraPaymentValue = pi.SecondNegativeExtraPaymentValue;
+            newTP.SecondSektor = pi.SecondSektor;
+            newTP.SellinPlace = pi.SellinPlace;
+            newTP.SpecialInsuranceCode = pi.SpecialInsuranceCode;
+            newTP.StartDate = pi.StartDate;
+            newTP.StartHour = pi.StartHour;
+            newTP.TarrifDate = pi.TarrifDate;
+            newTP.TaxPercentage = pi.TaxPercentage;
+            newTP.TaxValue = pi.TaxValue;
+            newTP.ThirdExtraPaymentCode = pi.ThirdExtraPaymentCode;
+            newTP.ThirdExtraPaymentValue = pi.ThirdExtraPaymentValue;
+            newTP.ThirdNegativeExtraPaymentCode = pi.ThirdNegativeExtraPaymentCode;
+            newTP.ThirdNegativeExtraPaymentValue = pi.ThirdNegativeExtraPaymentValue;
+            newTP.TotalValue = pi.TotalValue;
+            newTP.UserName = pi.UserName;
+            newTP.VehicleBrand = pi.VehicleBrand;
+            newTP.VehicleCarriage = pi.VehicleCarriage;
+            newTP.VehicleChassisNumber = pi.VehicleChassisNumber;
+            newTP.VehicleModel = pi.VehicleModel;
+            newTP.VehiclePassengersNumber = pi.VehiclePassengersNumber;
+            newTP.VehiclePower = pi.VehiclePower;
+            newTP.VehicleSeatsNumber = pi.VehicleSeatsNumber;
+            newTP.VehicleTypeCode = pi.VehicleTypeCode;
+            newTP.VehicleVolume = pi.VehicleVolume;
+            newTP.WindshieldRateCode = pi.WindshieldRateCode;
+            newTP.WindshieldRateValue = pi.WindshieldRateValue;
+            newTP.WindshieldValue = pi.WindshieldValue;
+            newTP.Insert();
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
+    [WebMethod]
+    public bool InsertTemporaryGreenCard(object o)
+    {
+        try {
+            GreenCardInformation gci = (GreenCardInformation)o;
+            TemporaryGreenCard newTGC = new TemporaryGreenCard();
+            newTGC.ApplicationDate = gci.ApplicationDate;
+            newTGC.BranchCode = gci.BranchCode;
+            newTGC.ChangeCode = gci.ChangeCode;
+            newTGC.DateOfChange = gci.DateOfChange;
+            newTGC.EndDate = gci.EndDate;
+            newTGC.FirstSektor = gci.FirstSektor;
+            newTGC.GreenCardCategory = gci.GreenCardCategory;
+            newTGC.GreenCardNumber = gci.GreenCardNumber;
+            newTGC.LockNumber = gci.LockNumber;
+            newTGC.OwnerAddress = gci.OwnerAddress;
+            newTGC.OwnerEMBG = gci.OwnerEMBG;
+            newTGC.OwnerName = gci.OwnerName;
+            newTGC.OwnerPostalCode = gci.OwnerPostalCode;
+            newTGC.ParentGreenCardNumber = gci.ParentGreenCardNumber;
+            newTGC.PolicyNumber = gci.PolicyNumber;
+            newTGC.RegistrationNumber = gci.RegistrationNumber;
+            newTGC.SecondSektor = gci.SecondSektor;
+            newTGC.StartDate = gci.StartDate;
+            newTGC.Static = gci.Static;
+            newTGC.TotalValue = gci.TotalValue;
+            newTGC.UserName = gci.UserName;
+            newTGC.VehicleBrand = gci.VehicleBrand;
+            newTGC.VehicleTypeCode = gci.VehicleTypeCode;
+            newTGC.Insert();
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+    
+}
+

@@ -1,0 +1,120 @@
+/* -------------------------------------------------------------- 
+  
+   reset.css
+   * Resets default browser CSS.
+   
+-------------------------------------------------------------- */
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, code,
+del, dfn, em, img, q, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: top;
+}
+/* end of reset */
+
+body {
+	font-size: 11px;
+	margin: 0px;
+	color: #2d3931;
+	font-family: Verdana, Geneva, sans-serif;
+	size: 11px;
+	background-image:url(../img/wall.jpg)
+}
+A:link {
+	color: #2D3931
+}
+A:visited {
+	color: #2D3931
+}
+A:hover {
+	color: #f60
+}
+A:active {
+	color: #f60
+}
+#loginBox {
+	padding-right: 20px;
+	margin-top: 10%;
+	padding-left: 20px;
+	padding-bottom: 20px;
+	margin-left: auto;
+	width: 320px;
+	margin-right: auto;
+	padding-top: 20px;
+	height: 230px;
+	background-color: #dbdbca;
+	border: 10px solid #2d3931;
+}
+#loginBox #title {
+	font-weight: bold;
+	font-size: 1.8em;
+	margin: 0%;
+	width: 320px;
+	line-height: 1.35em;
+	position: relative;
+	height: 100px;
+	text-align: center;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 10px;
+	padding-left: 0px;
+}
+#loginBox #title #logo {
+	padding-right: 0px; 
+	padding-left: 0px; 
+	float: left; 
+	padding-bottom: 0px; 
+	padding-top: 0px; 
+	margin: 0%; 
+	width: 100px; 
+	position: relative; 
+	height: 100px
+}
+#loginBox #title #text {
+	padding-right: 0px; 
+	padding-left: 0px; 
+	float: right; 
+	padding-bottom: 0px; 
+	margin: 0px 0px 0px 10px; 
+	width: 210px; 
+	padding-top: 0px; 
+	height: 100px
+}
+#loginBox #formFields {
+	padding-right: 0px; 
+	margin-top: 10px; 
+	padding-left: 0px; 
+	padding-bottom: 0px; 
+	width: 320px; 
+	padding-top: 0px; 
+	position: relative; 
+	height: 70px
+}
+#loginBox #formFields .fields {
+	padding-right: 0px; 
+	padding-left: 0px; 
+	left: 161px; 
+	padding-bottom: 0px; 
+	margin: 0px; 
+	padding-top: 0px; 
+	position: absolute
+}
+#loginBox #formFields P {
+	padding-bottom: 0.5em; 
+	margin: 0px; 
+	line-height: 2em; 
+	position: relative
+}
+
+
+

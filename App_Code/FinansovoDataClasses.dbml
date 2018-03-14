@@ -1,0 +1,1948 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ASUCBrokerFinansovo" Class="FinansovoDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=192.168.10.58;Initial Catalog=ASUCBrokerFinansovo;User ID=BITOLA" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ASUCBrokerFinansovoConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.AbesceTypes" Member="AbesceTypes">
+    <Type Name="AbesceType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="AbesceType_Absence" Member="Absences" ThisKey="ID" OtherKey="AbsenceTypeID" Type="Absence" />
+      <Association Name="Company_AbesceType" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WorkUnits" Member="WorkUnits">
+    <Type Name="WorkUnit">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="WorkUnit_CapitalAssetsCard" Member="CapitalAssetsCards" ThisKey="ID" OtherKey="WorkUnitID" Type="CapitalAssetsCard" />
+      <Association Name="WorkUnit_PayOff" Member="PayOffs" ThisKey="ID" OtherKey="WorkUnitID" Type="PayOff" />
+      <Association Name="WorkUnit_Returnee" Member="Returnees" ThisKey="ID" OtherKey="WorkUnitsID" Type="Returnee" />
+      <Association Name="WorkUnit_StorePayOff" Member="StorePayOffs" ThisKey="ID" OtherKey="WorkUnitID" Type="StorePayOff" />
+      <Association Name="WorkUnit_StorePayOff1" Member="StorePayOffs1" ThisKey="ID" OtherKey="WorkUnitID" Type="StorePayOff" />
+      <Association Name="WorkUnit_StoreReturnee" Member="StoreReturnees" ThisKey="ID" OtherKey="WorkUnitID" Type="StoreReturnee" />
+      <Association Name="WorkUnit_StoreReturnee1" Member="StoreReturnees1" ThisKey="ID" OtherKey="ForWorkUnitID" Type="StoreReturnee" />
+      <Association Name="WorkUnit_StoreWorkUnitEntrance" Member="StoreWorkUnitEntrances" ThisKey="ID" OtherKey="WorkUnitID" Type="StoreWorkUnitEntrance" />
+      <Association Name="WorkUnit_StoreWorkUnitEntrance1" Member="StoreWorkUnitEntrances1" ThisKey="ID" OtherKey="ForWorkUnitID" Type="StoreWorkUnitEntrance" />
+      <Association Name="WorkUnit_User" Member="Users" ThisKey="ID" OtherKey="WorkUnitID" Type="User" />
+      <Association Name="Company_WorkUnit" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Absences" Member="Absences">
+    <Type Name="Absence">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AbsenceTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Hours" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="AbesceType_Absence" Member="AbesceType" ThisKey="AbsenceTypeID" OtherKey="ID" Type="AbesceType" IsForeignKey="true" />
+      <Association Name="Company_Absence" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+      <Association Name="Employee_Absence" Member="Employee" ThisKey="EmployeeID" OtherKey="ID" Type="Employee" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AbsencesPercentage" Member="AbsencesPercentages">
+    <Type Name="AbsencesPercentage">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FromDays" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ToDays" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Percentage" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Accounts" Member="Accounts">
+    <Type Name="Account">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OrdinalNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DateTimeOpen" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DateTimeClose" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Value" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TaxValue" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TotalValue" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="IsOpen" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsDiscard" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TableID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Account_Account" Member="Account2" ThisKey="ID" OtherKey="ID" Type="Account" Cardinality="One" />
+      <Association Name="Account_AccountsItem" Member="AccountsItems" ThisKey="ID" OtherKey="AccountID" Type="AccountsItem" />
+      <Association Name="Account_AccountsItem1" Member="AccountsItems1" ThisKey="ID" OtherKey="AccountID" Type="AccountsItem" />
+      <Association Name="Account_Account" Member="Account1" ThisKey="ID" OtherKey="ID" Type="Account" IsForeignKey="true" />
+      <Association Name="User_Account" Member="User" ThisKey="UserID" OtherKey="ID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccountsItems" Member="AccountsItems">
+    <Type Name="AccountsItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OrdinalNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AccountID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Decimal(18,4) NOT NULL" CanBeNull="false" />
+      <Column Name="CostWithoutTax" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="TaxValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalCost" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Association Name="Account_AccountsItem" Member="Account" ThisKey="AccountID" OtherKey="ID" Type="Account" IsForeignKey="true" />
+      <Association Name="Account_AccountsItem1" Member="Account1" ThisKey="AccountID" OtherKey="ID" Type="Account" IsForeignKey="true" />
+      <Association Name="Item_AccountsItem" Member="Item" ThisKey="ItemID" OtherKey="ID" Type="Item" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Actions" Member="Actions">
+    <Type Name="Action">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ActionName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AdvanceInvoiceItems" Member="AdvanceInvoiceItems">
+    <Type Name="AdvanceInvoiceItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AdvanceInvoiceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OrdinalNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValueInCurrency" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="ValueInDenars" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="DDVTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DDVPercentage" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="SellPrice" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Association Name="AdvanceInvoice_AdvanceInvoiceItem" Member="AdvanceInvoice" ThisKey="AdvanceInvoiceID" OtherKey="ID" Type="AdvanceInvoice" IsForeignKey="true" />
+      <Association Name="DDVType_AdvanceInvoiceItem" Member="DDVType" ThisKey="DDVTypeID" OtherKey="ID" Type="DDVType" IsForeignKey="true" />
+      <Association Name="Item_AdvanceInvoiceItem" Member="Item" ThisKey="ItemID" OtherKey="ID" Type="Item" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AdvanceInvoices" Member="AdvanceInvoices">
+    <Type Name="AdvanceInvoice">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AdvanceInvoiceNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="HasDescription" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CurrencyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CourseValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="OutgoingFactureID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="AdvanceInvoice_AdvanceInvoiceItem" Member="AdvanceInvoiceItems" ThisKey="ID" OtherKey="AdvanceInvoiceID" Type="AdvanceInvoiceItem" />
+      <Association Name="Client_AdvanceInvoice" Member="Client" ThisKey="ClientID" OtherKey="ID" Type="Client" IsForeignKey="true" />
+      <Association Name="Currency_AdvanceInvoice" Member="Currency" ThisKey="CurrencyID" OtherKey="ID" Type="Currency" IsForeignKey="true" />
+      <Association Name="OutgoingFacture_AdvanceInvoice" Member="OutgoingFacture" ThisKey="OutgoingFactureID" OtherKey="ID" Type="OutgoingFacture" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Algorithms" Member="Algorithms">
+    <Type Name="Algorithm">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DocumentTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsInput" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Algorithm_DDVtypesChartOfAccount" Member="DDVtypesChartOfAccounts" ThisKey="ID" OtherKey="AlgorithmID" Type="DDVtypesChartOfAccount" />
+      <Association Name="DocumentType_Algorithm" Member="DocumentType" ThisKey="DocumentTypeID" OtherKey="ID" Type="DocumentType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Allowances" Member="Allowances">
+    <Type Name="Allowance">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AllowanceTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Hours" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Percentage" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="AllowanceType_Allowance" Member="AllowanceType" ThisKey="AllowanceTypeID" OtherKey="ID" Type="AllowanceType" IsForeignKey="true" />
+      <Association Name="Employee_Allowance" Member="Employee" ThisKey="EmployeeID" OtherKey="ID" Type="Employee" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AllowanceTypes" Member="AllowanceTypes">
+    <Type Name="AllowanceType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Percentage" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Association Name="AllowanceType_Allowance" Member="Allowances" ThisKey="ID" OtherKey="AllowanceTypeID" Type="Allowance" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AmortizationGroups" Member="AmortizationGroups">
+    <Type Name="AmortizationGroup">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Nomenclature" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Factor" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="AccountCode" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="AmortizationGroup_CapitalAssetsCard" Member="CapitalAssetsCards" ThisKey="ID" OtherKey="AmortizationGroupID" Type="CapitalAssetsCard" />
+      <Association Name="Company_AmortizationGroup" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BalanceCarriedForwards" Member="BalanceCarriedForwards">
+    <Type Name="BalanceCarriedForward">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ChartOfAccountID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsDebt" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Association Name="ChartOfAccount_BalanceCarriedForward" Member="ChartOfAccount" ThisKey="ChartOfAccountID" OtherKey="ID" Type="ChartOfAccount" IsForeignKey="true" />
+      <Association Name="Company_BalanceCarriedForward" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Banks" Member="Banks">
+    <Type Name="Bank">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Bank_BrokerABCreditCardsSetup" Member="BrokerABCreditCardsSetups" ThisKey="ID" OtherKey="BankID" Type="BrokerABCreditCardsSetup" />
+      <Association Name="Bank_ClientsBank" Member="ClientsBanks" ThisKey="ID" OtherKey="BankID" Type="ClientsBank" />
+      <Association Name="Bank_Employee" Member="Employees" ThisKey="ID" OtherKey="BankID" Type="Employee" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Branches" Member="Branches">
+    <Type Name="Branch">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MunicipalityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Association Name="Branch_Employee" Member="Employees" ThisKey="ID" OtherKey="BranchID" Type="Employee" />
+      <Association Name="Municipality_Branch" Member="Municipality" ThisKey="MunicipalityID" OtherKey="ID" Type="Municipality" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BrokerABAccountFacturesSetups" Member="BrokerABAccountFacturesSetups">
+    <Type Name="BrokerABAccountFacturesSetup">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InsuranceSubTypeCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="InsuranceSubTypeName" Type="System.String" DbType="NVarChar(300) NOT NULL" CanBeNull="false" />
+      <Column Name="InsuranceSubTypeShortName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ChartOfAccountID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsDebt" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsChartForAccountForTotal" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="ChartOfAccount_BrokerABAccountFacturesSetup" Member="ChartOfAccount" ThisKey="ChartOfAccountID" OtherKey="ID" Type="ChartOfAccount" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BrokerABCashSetups" Member="BrokerABCashSetups">
+    <Type Name="BrokerABCashSetup">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InsuranceSubTypeCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="InsuranceSubTypeName" Type="System.String" DbType="NVarChar(300) NOT NULL" CanBeNull="false" />
+      <Column Name="InsuranceSubTypeShortName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ChartOfAccountID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsDebt" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="ChartOfAccount_BrokerABCashSetup" Member="ChartOfAccount" ThisKey="ChartOfAccountID" OtherKey="ID" Type="ChartOfAccount" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BrokerABCreditCardsSetups" Member="BrokerABCreditCardsSetups">
+    <Type Name="BrokerABCreditCardsSetup">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InsuranceSubTypeCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="InsuranceSubTypeName" Type="System.String" DbType="NVarChar(300) NOT NULL" CanBeNull="false" />
+      <Column Name="InsuranceSubTypeShortName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ChartOfAccountID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BankID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsDebt" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Bank_BrokerABCreditCardsSetup" Member="Bank" ThisKey="BankID" OtherKey="ID" Type="Bank" IsForeignKey="true" />
+      <Association Name="ChartOfAccount_BrokerABCreditCardsSetup" Member="ChartOfAccount" ThisKey="ChartOfAccountID" OtherKey="ID" Type="ChartOfAccount" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BrokerABIncomeFacturesForExpencesSetups" Member="BrokerABIncomeFacturesForExpencesSetups">
+    <Type Name="BrokerABIncomeFacturesForExpencesSetup">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ChartOfAccountID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsTaxAccounting" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TaxPercentage" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="IsChartForAccountForTotal" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsDebt" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="ChartOfAccount_BrokerABIncomeFacturesForExpencesSetup" Member="ChartOfAccount" ThisKey="ChartOfAccountID" OtherKey="ID" Type="ChartOfAccount" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BrokerABIncomeFacturesSetups" Member="BrokerABIncomeFacturesSetups">
+    <Type Name="BrokerABIncomeFacturesSetup">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InsuranceSubTypeCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="InsuranceSubTypeName" Type="System.String" DbType="NVarChar(300) NOT NULL" CanBeNull="false" />
+      <Column Name="InsuranceSubTypeShortName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ChartOfAccountID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsDebt" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsChartForAccountForTotal" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="ChartOfAccount_BrokerABIncomeFacturesSetup" Member="ChartOfAccount" ThisKey="ChartOfAccountID" OtherKey="ID" Type="ChartOfAccount" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CapitalAssetsCardAmortizations" Member="CapitalAssetsCardAmortizations">
+    <Type Name="CapitalAssetsCardAmortization">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CapitalAssetsCardID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AmortizationDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="OriginalCost" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="WrittenOffValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="PresentValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="AmortizationValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CapitalAssetsCard_CapitalAssetsCardAmortization" Member="CapitalAssetsCard" ThisKey="CapitalAssetsCardID" OtherKey="ID" Type="CapitalAssetsCard" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CapitalAssetsCardRevaluations" Member="CapitalAssetsCardRevaluations">
+    <Type Name="CapitalAssetsCardRevaluation">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CapitalAssetsCardID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OldOriginalCost" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="OldWrittenOffValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="RevaluationFactor" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="RevaluationOriginalCost" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="RevaluationWrittenOffValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="NewOriginalCost" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="NewWrittenOffValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="RevaluationDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CapitalAssetsCard_CapitalAssetsCardRevaluation" Member="CapitalAssetsCard" ThisKey="CapitalAssetsCardID" OtherKey="ID" Type="CapitalAssetsCard" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CapitalAssetsCards" Member="CapitalAssetsCards">
+    <Type Name="CapitalAssetsCard">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Number" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="InventoryNumber" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="AmortizationGroupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Factor" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="OrderDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ApplicationDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DebitDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="WorkUnitID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IndebtPersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FactureNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FactureValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="DDVPercentage" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="IsForDDV" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LocationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AccountCode" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="LastAmortizationDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="OriginalCost" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="WrittenOffValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="PresentValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="AmortizationValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="InsertDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CapitalAssetsCard_CapitalAssetsCardAmortization" Member="CapitalAssetsCardAmortizations" ThisKey="ID" OtherKey="CapitalAssetsCardID" Type="CapitalAssetsCardAmortization" />
+      <Association Name="CapitalAssetsCard_CapitalAssetsCardRevaluation" Member="CapitalAssetsCardRevaluations" ThisKey="ID" OtherKey="CapitalAssetsCardID" Type="CapitalAssetsCardRevaluation" />
+      <Association Name="CapitalAssetsCard_TemporaryCapitalAssetsCard" Member="TemporaryCapitalAssetsCards" ThisKey="ID" OtherKey="CapitalAssetsCardID" Type="TemporaryCapitalAssetsCard" />
+      <Association Name="AmortizationGroup_CapitalAssetsCard" Member="AmortizationGroup" ThisKey="AmortizationGroupID" OtherKey="ID" Type="AmortizationGroup" IsForeignKey="true" />
+      <Association Name="WorkUnit_CapitalAssetsCard" Member="WorkUnit" ThisKey="WorkUnitID" OtherKey="ID" Type="WorkUnit" IsForeignKey="true" />
+      <Association Name="Client_CapitalAssetsCard" Member="Client" ThisKey="ClientID" OtherKey="ID" Type="Client" IsForeignKey="true" />
+      <Association Name="CompanyAccount_CapitalAssetsCard" Member="CompanyAccount" ThisKey="CompanyAccountID" OtherKey="ID" Type="CompanyAccount" IsForeignKey="true" />
+      <Association Name="IndebtPerson_CapitalAssetsCard" Member="IndebtPerson" ThisKey="IndebtPersonID" OtherKey="ID" Type="IndebtPerson" IsForeignKey="true" />
+      <Association Name="Location_CapitalAssetsCard" Member="Location" ThisKey="LocationID" OtherKey="ID" Type="Location" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CashDeskEntryDescriptions" Member="CashDeskEntryDescriptions">
+    <Type Name="CashDeskEntryDescription">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="DebtAccount" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="DebitAccount" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="RequiresClientInput" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="RequiresPersonInput" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CashDeskEntryTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CashDeskEntryDescription_CashDeskLogbookItem" Member="CashDeskLogbookItems" ThisKey="ID" OtherKey="CashDeskEntryDescriptionID" Type="CashDeskLogbookItem" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CashDeskEntryTypes" Member="CashDeskEntryTypes">
+    <Type Name="CashDeskEntryType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="CashDeskEntryType_CashDeskLogbookItem" Member="CashDeskLogbookItems" ThisKey="ID" OtherKey="CashDeskEntryTypeID" Type="CashDeskLogbookItem" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CashDeskLogbookItems" Member="CashDeskLogbookItems">
+    <Type Name="CashDeskLogbookItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CashDeskLogbookID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OrdinalNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CashboxNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CashDeskEntryDescriptionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CashDeskPersonID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DocumentNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CurrencyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CourseValue" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="CurrencyValue" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Value" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="DebtValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="DebitValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="CashDeskEntryTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CashDeskEntryDescription_CashDeskLogbookItem" Member="CashDeskEntryDescription" ThisKey="CashDeskEntryDescriptionID" OtherKey="ID" Type="CashDeskEntryDescription" IsForeignKey="true" />
+      <Association Name="CashDeskEntryType_CashDeskLogbookItem" Member="CashDeskEntryType" ThisKey="CashDeskEntryTypeID" OtherKey="ID" Type="CashDeskEntryType" IsForeignKey="true" />
+      <Association Name="CashDeskLogbook_CashDeskLogbookItem" Member="CashDeskLogbook" ThisKey="CashDeskLogbookID" OtherKey="ID" Type="CashDeskLogbook" IsForeignKey="true" />
+      <Association Name="CashDeskPerson_CashDeskLogbookItem" Member="CashDeskPerson" ThisKey="CashDeskPersonID" OtherKey="ID" Type="CashDeskPerson" IsForeignKey="true" />
+      <Association Name="Client_CashDeskLogbookItem" Member="Client" ThisKey="ClientID" OtherKey="ID" Type="Client" IsForeignKey="true" />
+      <Association Name="Company_CashDeskLogbookItem" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+      <Association Name="Currency_CashDeskLogbookItem" Member="Currency" ThisKey="CurrencyID" OtherKey="ID" Type="Currency" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CashDeskLogbooks" Member="CashDeskLogbooks">
+    <Type Name="CashDeskLogbook">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Number" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CashDeskTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CashDeskLogbook_CashDeskLogbookItem" Member="CashDeskLogbookItems" ThisKey="ID" OtherKey="CashDeskLogbookID" Type="CashDeskLogbookItem" />
+      <Association Name="CashDeskType_CashDeskLogbook" Member="CashDeskType" ThisKey="CashDeskTypeID" OtherKey="ID" Type="CashDeskType" IsForeignKey="true" />
+      <Association Name="Company_CashDeskLogbook" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CashDeskPersons" Member="CashDeskPersons">
+    <Type Name="CashDeskPerson">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CashDeskPerson_CashDeskLogbookItem" Member="CashDeskLogbookItems" ThisKey="ID" OtherKey="CashDeskPersonID" Type="CashDeskLogbookItem" />
+      <Association Name="Person_CashDeskPerson" Member="Person" ThisKey="PersonID" OtherKey="ID" Type="Person" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CashDeskTypes" Member="CashDeskTypes">
+    <Type Name="CashDeskType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CashDeskType_CashDeskLogbook" Member="CashDeskLogbooks" ThisKey="ID" OtherKey="CashDeskTypeID" Type="CashDeskLogbook" />
+      <Association Name="Company_CashDeskType" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CashPaymentItems" Member="CashPaymentItems">
+    <Type Name="CashPaymentItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CashPaymentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CashPayment_CashPaymentItem" Member="CashPayment" ThisKey="CashPaymentID" OtherKey="ID" Type="CashPayment" IsForeignKey="true" />
+      <Association Name="PaymentType_CashPaymentItem" Member="PaymentType" ThisKey="PaymentTypeID" OtherKey="ID" Type="PaymentType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CashPayments" Member="CashPayments">
+    <Type Name="CashPayment">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PolicyNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SerialNumber" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsBooked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CashPayment_CashPaymentItem" Member="CashPaymentItems" ThisKey="ID" OtherKey="CashPaymentID" Type="CashPaymentItem" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ChartOfAccounts" Member="ChartOfAccounts">
+    <Type Name="ChartOfAccount">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="MustHaveClient" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsForTaxEntry" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="MustHaveLocation" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsPosition" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="HasPosition" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ChartOfAccount_BalanceCarriedForward" Member="BalanceCarriedForwards" ThisKey="ID" OtherKey="ChartOfAccountID" Type="BalanceCarriedForward" />
+      <Association Name="ChartOfAccount_BrokerABAccountFacturesSetup" Member="BrokerABAccountFacturesSetups" ThisKey="ID" OtherKey="ChartOfAccountID" Type="BrokerABAccountFacturesSetup" />
+      <Association Name="ChartOfAccount_BrokerABCashSetup" Member="BrokerABCashSetups" ThisKey="ID" OtherKey="ChartOfAccountID" Type="BrokerABCashSetup" />
+      <Association Name="ChartOfAccount_BrokerABCreditCardsSetup" Member="BrokerABCreditCardsSetups" ThisKey="ID" OtherKey="ChartOfAccountID" Type="BrokerABCreditCardsSetup" />
+      <Association Name="ChartOfAccount_BrokerABIncomeFacturesForExpencesSetup" Member="BrokerABIncomeFacturesForExpencesSetups" ThisKey="ID" OtherKey="ChartOfAccountID" Type="BrokerABIncomeFacturesForExpencesSetup" />
+      <Association Name="ChartOfAccount_BrokerABIncomeFacturesSetup" Member="BrokerABIncomeFacturesSetups" ThisKey="ID" OtherKey="ChartOfAccountID" Type="BrokerABIncomeFacturesSetup" />
+      <Association Name="ChartOfAccount_ChartOfAccountsDocumentType" Member="ChartOfAccountsDocumentTypes" ThisKey="ID" OtherKey="ChartOfAccountsID" Type="ChartOfAccountsDocumentType" />
+      <Association Name="ChartOfAccount_CostType" Member="CostTypes" ThisKey="ID" OtherKey="ChartOfAccountID" Type="CostType" />
+      <Association Name="ChartOfAccount_DDVtypesChartOfAccount" Member="DDVtypesChartOfAccounts" ThisKey="ID" OtherKey="ChartOfAccountID" Type="DDVtypesChartOfAccount" />
+      <Association Name="ChartOfAccount_EntryControlsChartOfAccount" Member="EntryControlsChartOfAccounts" ThisKey="ID" OtherKey="ChartOfAccountID" Type="EntryControlsChartOfAccount" />
+      <Association Name="ChartOfAccount_OrderItem" Member="OrderItems" ThisKey="ID" OtherKey="ChartOfAccountID" Type="OrderItem" />
+      <Association Name="ChartOfAccount_OrderItem1" Member="OrderItems1" ThisKey="ID" OtherKey="ChartOfAccountPositionID" Type="OrderItem" />
+      <Association Name="ChartOfAccount_PaymentForm" Member="PaymentForms" ThisKey="ID" OtherKey="OutFlowChartOfAccountID" Type="PaymentForm" />
+      <Association Name="ChartOfAccount_PaymentForm1" Member="PaymentForms1" ThisKey="ID" OtherKey="InflowChartOfAccountID" Type="PaymentForm" />
+      <Association Name="Company_ChartOfAccount" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ChartOfAccountsDocumentTypes" Member="ChartOfAccountsDocumentTypes">
+    <Type Name="ChartOfAccountsDocumentType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ChartOfAccountsID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DocumentTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsDefault" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsDebt" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ChartOfAccount_ChartOfAccountsDocumentType" Member="ChartOfAccount" ThisKey="ChartOfAccountsID" OtherKey="ID" Type="ChartOfAccount" IsForeignKey="true" />
+      <Association Name="Company_ChartOfAccountsDocumentType" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+      <Association Name="DocumentType_ChartOfAccountsDocumentType" Member="DocumentType" ThisKey="DocumentTypeID" OtherKey="ID" Type="DocumentType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Clients" Member="Clients">
+    <Type Name="Client">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="EMBG" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsLaw" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="MobileNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="FaxNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="TaxNumber" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="PlaceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsSeller" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsBuyer" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IBAN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Client_AdvanceInvoice" Member="AdvanceInvoices" ThisKey="ID" OtherKey="ClientID" Type="AdvanceInvoice" />
+      <Association Name="Client_CapitalAssetsCard" Member="CapitalAssetsCards" ThisKey="ID" OtherKey="ClientID" Type="CapitalAssetsCard" />
+      <Association Name="Client_CashDeskLogbookItem" Member="CashDeskLogbookItems" ThisKey="ID" OtherKey="ClientID" Type="CashDeskLogbookItem" />
+      <Association Name="Client_ClientsBank" Member="ClientsBanks" ThisKey="ID" OtherKey="ClientID" Type="ClientsBank" />
+      <Association Name="Client_EntranceExpence" Member="EntranceExpences" ThisKey="ID" OtherKey="ClientID" Type="EntranceExpence" />
+      <Association Name="Client_Entrance" Member="Entrances" ThisKey="ID" OtherKey="SupplierID" Type="Entrance" />
+      <Association Name="Client_Facture" Member="Factures" ThisKey="ID" OtherKey="ClientID" Type="Facture" />
+      <Association Name="Client_ItemOriginalCost" Member="ItemOriginalCosts" ThisKey="ID" OtherKey="SupplierID" Type="ItemOriginalCost" />
+      <Association Name="Client_OrderItem" Member="OrderItems" ThisKey="ID" OtherKey="ClientID" Type="OrderItem" />
+      <Association Name="Client_OutgoingFacture" Member="OutgoingFactures" ThisKey="ID" OtherKey="ClientID" Type="OutgoingFacture" />
+      <Association Name="Client_PaymentForm" Member="PaymentForms" ThisKey="ID" OtherKey="ClientID" Type="PaymentForm" />
+      <Association Name="Client_PayOff" Member="PayOffs" ThisKey="ID" OtherKey="ClientID" Type="PayOff" />
+      <Association Name="Client_Returnee" Member="Returnees" ThisKey="ID" OtherKey="ClientID" Type="Returnee" />
+      <Association Name="Client_StoreWorkUnitEntrance" Member="StoreWorkUnitEntrances" ThisKey="ID" OtherKey="SupplierID" Type="StoreWorkUnitEntrance" />
+      <Association Name="Client_Withholding" Member="Withholdings" ThisKey="ID" OtherKey="ClientID" Type="Withholding" />
+      <Association Name="Company_Client" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+      <Association Name="Place_Client" Member="Place" ThisKey="PlaceID" OtherKey="ID" Type="Place" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ClientsBanks" Member="ClientsBanks">
+    <Type Name="ClientsBank">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BankID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SWIFTCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Bank_ClientsBank" Member="Bank" ThisKey="BankID" OtherKey="ID" Type="Bank" IsForeignKey="true" />
+      <Association Name="Client_ClientsBank" Member="Client" ThisKey="ClientID" OtherKey="ID" Type="Client" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Companies" Member="Companies">
+    <Type Name="Company">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Split" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="RKB" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IBAN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Company_AbesceType" Member="AbesceTypes" ThisKey="ID" OtherKey="CompanyID" Type="AbesceType" />
+      <Association Name="Company_WorkUnit" Member="WorkUnits" ThisKey="ID" OtherKey="CompanyID" Type="WorkUnit" />
+      <Association Name="Company_Absence" Member="Absences" ThisKey="ID" OtherKey="CompanyID" Type="Absence" />
+      <Association Name="Company_AmortizationGroup" Member="AmortizationGroups" ThisKey="ID" OtherKey="CompanyID" Type="AmortizationGroup" />
+      <Association Name="Company_BalanceCarriedForward" Member="BalanceCarriedForwards" ThisKey="ID" OtherKey="CompanyID" Type="BalanceCarriedForward" />
+      <Association Name="Company_CashDeskLogbookItem" Member="CashDeskLogbookItems" ThisKey="ID" OtherKey="CompanyID" Type="CashDeskLogbookItem" />
+      <Association Name="Company_CashDeskLogbook" Member="CashDeskLogbooks" ThisKey="ID" OtherKey="CompanyID" Type="CashDeskLogbook" />
+      <Association Name="Company_CashDeskType" Member="CashDeskTypes" ThisKey="ID" OtherKey="CompanyID" Type="CashDeskType" />
+      <Association Name="Company_ChartOfAccount" Member="ChartOfAccounts" ThisKey="ID" OtherKey="CompanyID" Type="ChartOfAccount" />
+      <Association Name="Company_ChartOfAccountsDocumentType" Member="ChartOfAccountsDocumentTypes" ThisKey="ID" OtherKey="CompanyID" Type="ChartOfAccountsDocumentType" />
+      <Association Name="Company_Client" Member="Clients" ThisKey="ID" OtherKey="CompanyID" Type="Client" />
+      <Association Name="Company_CompanyAccount" Member="CompanyAccounts" ThisKey="ID" OtherKey="CompanyID" Type="CompanyAccount" />
+      <Association Name="Company_Contribution" Member="Contributions" ThisKey="ID" OtherKey="CompanyID" Type="Contribution" />
+      <Association Name="Company_DocumentType" Member="DocumentTypes" ThisKey="ID" OtherKey="CompanyId" Type="DocumentType" />
+      <Association Name="Company_Employee" Member="Employees" ThisKey="ID" OtherKey="CompanyID" Type="Employee" />
+      <Association Name="Company_EntryControl" Member="EntryControls" ThisKey="ID" OtherKey="CompanyID" Type="EntryControl" />
+      <Association Name="Company_EntryType" Member="EntryTypes" ThisKey="ID" OtherKey="CompanyID" Type="EntryType" />
+      <Association Name="Company_Form" Member="Forms" ThisKey="ID" OtherKey="CompanyID" Type="Form" />
+      <Association Name="Company_IndebtPerson" Member="IndebtPersons" ThisKey="ID" OtherKey="CompanyID" Type="IndebtPerson" />
+      <Association Name="Company_Location" Member="Locations" ThisKey="ID" OtherKey="CompanyID" Type="Location" />
+      <Association Name="Company_MonthlyWithholding" Member="MonthlyWithholdings" ThisKey="ID" OtherKey="CompanyID" Type="MonthlyWithholding" />
+      <Association Name="Company_Order" Member="Orders" ThisKey="ID" OtherKey="CompanyID" Type="Order" />
+      <Association Name="Company_PaymentForm" Member="PaymentForms" ThisKey="ID" OtherKey="CompanyID" Type="PaymentForm" />
+      <Association Name="Company_Person" Member="Persons" ThisKey="ID" OtherKey="CompanyID" Type="Person" />
+      <Association Name="Company_Program" Member="Programs" ThisKey="ID" OtherKey="CompanyID" Type="Program" />
+      <Association Name="Company_RevaluationFactor" Member="RevaluationFactors" ThisKey="ID" OtherKey="CompanyID" Type="RevaluationFactor" />
+      <Association Name="Company_Salary" Member="Salaries" ThisKey="ID" OtherKey="CompanyID" Type="Salary" />
+      <Association Name="Company_Sector" Member="Sectors" ThisKey="ID" OtherKey="CompanyID" Type="Sector" />
+      <Association Name="Company_Withholding" Member="Withholdings" ThisKey="ID" OtherKey="CompanyID" Type="Withholding" />
+      <Association Name="Company_WorkPosition" Member="WorkPositions" ThisKey="ID" OtherKey="CompanyID" Type="WorkPosition" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CompanyAccounts" Member="CompanyAccounts">
+    <Type Name="CompanyAccount">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(70) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BankAccount" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CompanyAccount_CapitalAssetsCard" Member="CapitalAssetsCards" ThisKey="ID" OtherKey="CompanyAccountID" Type="CapitalAssetsCard" />
+      <Association Name="CompanyAccount_CompanyAccountsUser" Member="CompanyAccountsUsers" ThisKey="ID" OtherKey="CompanyAccountID" Type="CompanyAccountsUser" />
+      <Association Name="CompanyAccount_Order" Member="Orders" ThisKey="ID" OtherKey="CompanyAccountID" Type="Order" />
+      <Association Name="CompanyAccount_PaymentForm" Member="PaymentForms" ThisKey="ID" OtherKey="CompanyAccountID" Type="PaymentForm" />
+      <Association Name="Company_CompanyAccount" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CompanyAccountsUsers" Member="CompanyAccountsUsers">
+    <Type Name="CompanyAccountsUser">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CompanyAccountID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CompanyAccount_CompanyAccountsUser" Member="CompanyAccount" ThisKey="CompanyAccountID" OtherKey="ID" Type="CompanyAccount" IsForeignKey="true" />
+      <Association Name="User_CompanyAccountsUser" Member="User" ThisKey="UserID" OtherKey="ID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Contributions" Member="Contributions">
+    <Type Name="Contribution">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Month" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Year" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Pension" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Healt" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Additional" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="PersonalTax" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Employ" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Company_Contribution" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CostClasses" Member="CostClasses">
+    <Type Name="CostClass">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="CostClass_EntranceSubExpence" Member="EntranceSubExpences" ThisKey="ID" OtherKey="CostClassID" Type="EntranceSubExpence" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CostSubTypes" Member="CostSubTypes">
+    <Type Name="CostSubType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CostTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="CostType_CostSubType" Member="CostType" ThisKey="CostTypeID" OtherKey="ID" Type="CostType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CostTypes" Member="CostTypes">
+    <Type Name="CostType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ChartOfAccountID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CostType_CostSubType" Member="CostSubTypes" ThisKey="ID" OtherKey="CostTypeID" Type="CostSubType" />
+      <Association Name="CostType_EntranceExpence" Member="EntranceExpences" ThisKey="ID" OtherKey="CostTypeID" Type="EntranceExpence" />
+      <Association Name="ChartOfAccount_CostType" Member="ChartOfAccount" ThisKey="ChartOfAccountID" OtherKey="ID" Type="ChartOfAccount" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Currencies" Member="Currencies">
+    <Type Name="Currency">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Sign" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CurrentValue" Type="System.Decimal" DbType="Decimal(18,4) NOT NULL" CanBeNull="false" />
+      <Association Name="Currency_AdvanceInvoice" Member="AdvanceInvoices" ThisKey="ID" OtherKey="CurrencyID" Type="AdvanceInvoice" />
+      <Association Name="Currency_CashDeskLogbookItem" Member="CashDeskLogbookItems" ThisKey="ID" OtherKey="CurrencyID" Type="CashDeskLogbookItem" />
+      <Association Name="Currency_Entrance" Member="Entrances" ThisKey="ID" OtherKey="CurrencyID" Type="Entrance" />
+      <Association Name="Currency_EntranceSubExpence" Member="EntranceSubExpences" ThisKey="ID" OtherKey="CurrencyID" Type="EntranceSubExpence" />
+      <Association Name="Currency_OrderItem" Member="OrderItems" ThisKey="ID" OtherKey="CurrencyID" Type="OrderItem" />
+      <Association Name="Currency_PayOff" Member="PayOffs" ThisKey="ID" OtherKey="CurrencyID" Type="PayOff" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DDVTypes" Member="DDVTypes">
+    <Type Name="DDVType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Percentage" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Association Name="DDVType_AdvanceInvoiceItem" Member="AdvanceInvoiceItems" ThisKey="ID" OtherKey="DDVTypeID" Type="AdvanceInvoiceItem" />
+      <Association Name="DDVType_DDVtypesChartOfAccount" Member="DDVtypesChartOfAccounts" ThisKey="ID" OtherKey="DDVTypeID" Type="DDVtypesChartOfAccount" />
+      <Association Name="DDVType_FactureSpecification" Member="FactureSpecifications" ThisKey="ID" OtherKey="DDVTypeID" Type="FactureSpecification" />
+      <Association Name="DDVType_ItemCostForRestaurant" Member="ItemCostForRestaurants" ThisKey="ID" OtherKey="DDVTypeID" Type="ItemCostForRestaurant" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DDVtypesChartOfAccounts" Member="DDVtypesChartOfAccounts">
+    <Type Name="DDVtypesChartOfAccount">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AlgorithmID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DDVTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PaymentTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ChartOfAccountID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsDebt" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Algorithm_DDVtypesChartOfAccount" Member="Algorithm" ThisKey="AlgorithmID" OtherKey="ID" Type="Algorithm" IsForeignKey="true" />
+      <Association Name="ChartOfAccount_DDVtypesChartOfAccount" Member="ChartOfAccount" ThisKey="ChartOfAccountID" OtherKey="ID" Type="ChartOfAccount" IsForeignKey="true" />
+      <Association Name="DDVType_DDVtypesChartOfAccount" Member="DDVType" ThisKey="DDVTypeID" OtherKey="ID" Type="DDVType" IsForeignKey="true" />
+      <Association Name="PaymentType_DDVtypesChartOfAccount" Member="PaymentType" ThisKey="PaymentTypeID" OtherKey="ID" Type="PaymentType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DocumentTypes" Member="DocumentTypes">
+    <Type Name="DocumentType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="DocumentType_Algorithm" Member="Algorithms" ThisKey="ID" OtherKey="DocumentTypeID" Type="Algorithm" />
+      <Association Name="DocumentType_ChartOfAccountsDocumentType" Member="ChartOfAccountsDocumentTypes" ThisKey="ID" OtherKey="DocumentTypeID" Type="ChartOfAccountsDocumentType" />
+      <Association Name="DocumentType_Facture" Member="Factures" ThisKey="ID" OtherKey="DocumentTypeID" Type="Facture" />
+      <Association Name="DocumentType_OrderItem" Member="OrderItems" ThisKey="ID" OtherKey="DocumentTypeID" Type="OrderItem" />
+      <Association Name="Company_DocumentType" Member="Company" ThisKey="CompanyId" OtherKey="ID" Type="Company" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Employees" Member="Employees">
+    <Type Name="Employee">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SectorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmploymentDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RideAwayDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="InternshipYears" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InternshipMonths" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InternshipDays" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="WorkPositionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EMBG" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="MunicipalityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="HealthInsuranceCardNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TransactionAccountNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="HealthInsuranceFundCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPieceRateEmployee" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsInvalidPerson" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="BranchID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NationalityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ReligionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BankID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Fond" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Association Name="Employee_Absence" Member="Absences" ThisKey="ID" OtherKey="EmployeeID" Type="Absence" />
+      <Association Name="Employee_Allowance" Member="Allowances" ThisKey="ID" OtherKey="EmployeeID" Type="Allowance" />
+      <Association Name="Employee_HistorySalary" Member="HistorySalaries" ThisKey="ID" OtherKey="EmployeeID" Type="HistorySalary" />
+      <Association Name="Employee_Salary" Member="Salaries" ThisKey="ID" OtherKey="EmployeeID" Type="Salary" />
+      <Association Name="Employee_Withholding" Member="Withholdings" ThisKey="ID" OtherKey="EmployeeID" Type="Withholding" />
+      <Association Name="Branch_Employee" Member="Branch" ThisKey="BranchID" OtherKey="ID" Type="Branch" IsForeignKey="true" />
+      <Association Name="Company_Employee" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+      <Association Name="Bank_Employee" Member="Bank" ThisKey="BankID" OtherKey="ID" Type="Bank" IsForeignKey="true" />
+      <Association Name="Municipality_Employee" Member="Municipality" ThisKey="MunicipalityID" OtherKey="ID" Type="Municipality" IsForeignKey="true" />
+      <Association Name="Nationality_Employee" Member="Nationality" ThisKey="NationalityID" OtherKey="ID" Type="Nationality" IsForeignKey="true" />
+      <Association Name="Person_Employee" Member="Person" ThisKey="PersonID" OtherKey="ID" Type="Person" IsForeignKey="true" />
+      <Association Name="Religion_Employee" Member="Religion" ThisKey="ReligionID" OtherKey="ID" Type="Religion" IsForeignKey="true" />
+      <Association Name="Sector_Employee" Member="Sector" ThisKey="SectorID" OtherKey="ID" Type="Sector" IsForeignKey="true" />
+      <Association Name="WorkPosition_Employee" Member="WorkPosition" ThisKey="WorkPositionID" OtherKey="ID" Type="WorkPosition" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EntranceExpences" Member="EntranceExpences">
+    <Type Name="EntranceExpence">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OrdinalNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FactureNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FactureDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CurrencyDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EntranceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CostTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsForCustoms" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsFromInputFacture" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="EntranceExpence_EntranceSubExpence" Member="EntranceSubExpences" ThisKey="ID" OtherKey="EntranceExpenceID" Type="EntranceSubExpence" />
+      <Association Name="Client_EntranceExpence" Member="Client" ThisKey="ClientID" OtherKey="ID" Type="Client" IsForeignKey="true" />
+      <Association Name="CostType_EntranceExpence" Member="CostType" ThisKey="CostTypeID" OtherKey="ID" Type="CostType" IsForeignKey="true" />
+      <Association Name="Entrance_EntranceExpence" Member="Entrance" ThisKey="EntranceID" OtherKey="ID" Type="Entrance" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EntranceFactures" Member="EntranceFactures">
+    <Type Name="EntranceFacture">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EntranceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MaterialFactureID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Entrance_EntranceFacture" Member="Entrance" ThisKey="EntranceID" OtherKey="ID" Type="Entrance" IsForeignKey="true" />
+      <Association Name="MaterialFacture_EntranceFacture" Member="MaterialFacture" ThisKey="MaterialFactureID" OtherKey="ID" Type="MaterialFacture" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EntranceItems" Member="EntranceItems">
+    <Type Name="EntranceItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OrdinalNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EntranceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="OriginalCost" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="IsOwn" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="FactureValueInCurrency" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="FactureValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="CustomPercentage" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="TaxPercentage" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="MarginPercentage" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="RebatePercentage" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="OriginalCostWithMarginRebate" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="OrderInManufacture" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IsFromPreviousYear" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CustomValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="TaxValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="MaterialFacturesID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Entrance_EntranceItem" Member="Entrance" ThisKey="EntranceID" OtherKey="ID" Type="Entrance" IsForeignKey="true" />
+      <Association Name="Item_EntranceItem" Member="Item" ThisKey="ItemID" OtherKey="ID" Type="Item" IsForeignKey="true" />
+      <Association Name="MaterialFacture_EntranceItem" Member="MaterialFacture" ThisKey="MaterialFacturesID" OtherKey="ID" Type="MaterialFacture" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Entrances" Member="Entrances">
+    <Type Name="Entrance">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EntranceNumber" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="EntranceDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SupplierID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OrderNumberByManufacture" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TransportExpences" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="ClausesExpences" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="UndependedExpences" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="OtherExpences" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="CurrencyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ExchangeRate" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="TotalSum" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="ExchangeDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EvidenceNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EntranceTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InputDocument" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CourseValue" Type="System.Decimal" DbType="Decimal(18,4) NOT NULL" CanBeNull="false" />
+      <Column Name="FactureValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="ExpencesFromCustom" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="ExpencesFromTax" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Association Name="Entrance_EntranceExpence" Member="EntranceExpences" ThisKey="ID" OtherKey="EntranceID" Type="EntranceExpence" />
+      <Association Name="Entrance_EntranceFacture" Member="EntranceFactures" ThisKey="ID" OtherKey="EntranceID" Type="EntranceFacture" />
+      <Association Name="Entrance_EntranceItem" Member="EntranceItems" ThisKey="ID" OtherKey="EntranceID" Type="EntranceItem" />
+      <Association Name="Client_Entrance" Member="Client" ThisKey="SupplierID" OtherKey="ID" Type="Client" IsForeignKey="true" />
+      <Association Name="Currency_Entrance" Member="Currency" ThisKey="CurrencyID" OtherKey="ID" Type="Currency" IsForeignKey="true" />
+      <Association Name="MaterialDocumentSubType_Entrance" Member="MaterialDocumentSubType" ThisKey="EntranceTypeID" OtherKey="ID" Type="MaterialDocumentSubType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EntranceSubExpences" Member="EntranceSubExpences">
+    <Type Name="EntranceSubExpence">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OrdinalNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EntranceExpenceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CostClassID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Cost" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="TaxPercent" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="CurrencyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CourseValue" Type="System.Decimal" DbType="Decimal(18,4) NOT NULL" CanBeNull="false" />
+      <Column Name="CostInCurrency" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Association Name="CostClass_EntranceSubExpence" Member="CostClass" ThisKey="CostClassID" OtherKey="ID" Type="CostClass" IsForeignKey="true" />
+      <Association Name="Currency_EntranceSubExpence" Member="Currency" ThisKey="CurrencyID" OtherKey="ID" Type="Currency" IsForeignKey="true" />
+      <Association Name="EntranceExpence_EntranceSubExpence" Member="EntranceExpence" ThisKey="EntranceExpenceID" OtherKey="ID" Type="EntranceExpence" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EntryControls" Member="EntryControls">
+    <Type Name="EntryControl">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EntryTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IDName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LabelText" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IsRequred" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="VariableTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="EntryControl_EntryControlsChartOfAccount" Member="EntryControlsChartOfAccounts" ThisKey="ID" OtherKey="EntryControlID" Type="EntryControlsChartOfAccount" />
+      <Association Name="Company_EntryControl" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+      <Association Name="EntryType_EntryControl" Member="EntryType" ThisKey="EntryTypeID" OtherKey="ID" Type="EntryType" IsForeignKey="true" />
+      <Association Name="VariableType_EntryControl" Member="VariableType" ThisKey="VariableTypeID" OtherKey="ID" Type="VariableType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EntryControlsChartOfAccounts" Member="EntryControlsChartOfAccounts">
+    <Type Name="EntryControlsChartOfAccount">
+      <Column Name="EntryControlID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ChartOfAccountID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IsDept" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="ChartOfAccount_EntryControlsChartOfAccount" Member="ChartOfAccount" ThisKey="ChartOfAccountID" OtherKey="ID" Type="ChartOfAccount" IsForeignKey="true" />
+      <Association Name="EntryControl_EntryControlsChartOfAccount" Member="EntryControl" ThisKey="EntryControlID" OtherKey="ID" Type="EntryControl" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EntryTypes" Member="EntryTypes">
+    <Type Name="EntryType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="EntryType_EntryControl" Member="EntryControls" ThisKey="ID" OtherKey="EntryTypeID" Type="EntryControl" />
+      <Association Name="Company_EntryType" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FacturePolicyNumbers" Member="FacturePolicyNumbers">
+    <Type Name="FacturePolicyNumber">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FactureID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PolicyNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Facture_FacturePolicyNumber" Member="Facture" ThisKey="FactureID" OtherKey="ID" Type="Facture" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Factures" Member="Factures">
+    <Type Name="Facture">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FactureNumber" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalCost" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="DateOfCreation" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DocumentTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsInput" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsBooked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Facture_FacturePolicyNumber" Member="FacturePolicyNumbers" ThisKey="ID" OtherKey="FactureID" Type="FacturePolicyNumber" />
+      <Association Name="Facture_FactureSpecification" Member="FactureSpecifications" ThisKey="ID" OtherKey="FactureID" Type="FactureSpecification" />
+      <Association Name="Client_Facture" Member="Client" ThisKey="ClientID" OtherKey="ID" Type="Client" IsForeignKey="true" />
+      <Association Name="DocumentType_Facture" Member="DocumentType" ThisKey="DocumentTypeID" OtherKey="ID" Type="DocumentType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FactureSpecifications" Member="FactureSpecifications">
+    <Type Name="FactureSpecification">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FactureID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DDVTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DDVValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Association Name="DDVType_FactureSpecification" Member="DDVType" ThisKey="DDVTypeID" OtherKey="ID" Type="DDVType" IsForeignKey="true" />
+      <Association Name="Facture_FactureSpecification" Member="Facture" ThisKey="FactureID" OtherKey="ID" Type="Facture" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Forms" Member="Forms">
+    <Type Name="Form">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Form_PaymentForm" Member="PaymentForms" ThisKey="ID" OtherKey="FormID" Type="PaymentForm" />
+      <Association Name="Company_Form" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HistoryCashDeskLogBookItems" Member="HistoryCashDeskLogBookItems">
+    <Type Name="HistoryCashDeskLogBookItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CashDeskLogbookItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CashDeskLogbookID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OrdinalNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CashBoxNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CashDeskEntryDescriptionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CashDeskPersonID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DocumentNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CurrencyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CourseValue" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="CurrencyValue" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Value" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="DebtValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="DebitValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="CashDeskEntryTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Change" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DateOfChange" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HistoryItemOriginalCosts" Member="HistoryItemOriginalCosts">
+    <Type Name="HistoryItemOriginalCost">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemOriginalCostID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="OriginalCost" Type="System.Decimal" DbType="Decimal(18,4) NOT NULL" CanBeNull="false" />
+      <Column Name="SellValue" Type="System.Decimal" DbType="Decimal(18,4) NOT NULL" CanBeNull="false" />
+      <Column Name="IsInput" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="MaterialDocumentTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DocumentNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientName" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="HistoryItemOriginalCost_HistoryItemOriginalCost" Member="HistoryItemOriginalCost2" ThisKey="ID" OtherKey="ID" Type="HistoryItemOriginalCost" Cardinality="One" />
+      <Association Name="HistoryItemOriginalCost_HistoryItemOriginalCost" Member="HistoryItemOriginalCost1" ThisKey="ID" OtherKey="ID" Type="HistoryItemOriginalCost" IsForeignKey="true" />
+      <Association Name="ItemOriginalCost_HistoryItemOriginalCost" Member="ItemOriginalCost" ThisKey="ItemOriginalCostID" OtherKey="ID" Type="ItemOriginalCost" IsForeignKey="true" />
+      <Association Name="MaterialDocumentType_HistoryItemOriginalCost" Member="MaterialDocumentType" ThisKey="MaterialDocumentTypeID" OtherKey="ID" Type="MaterialDocumentType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HistorySalaries" Member="HistorySalaries">
+    <Type Name="HistorySalary">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SalaryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DateOfChange" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Month" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Year" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NetProduceHours" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NetProduceValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="NetNormHours" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NetNormValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="IllnessHours" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IllnessValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="IllnessSocialHours" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IllnesSocialValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="VacationHours" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="VacationValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="StateHolidayHours" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StateHolidayValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="BaseCostValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="SectorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AllowanceValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="GrossAmmount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="PersonalTax" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="PensionValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="PensionValueAdditionalValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="HealthValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="HealthValueAdditionalValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="AdditionalValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="AdditionalValueAdditionalValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="EmployValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="EmployValueAdditionalValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="TaxRealeseValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="NonpaidHours" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PrivateAbsenceHours" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PrivateAbsenceValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="IntershipTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsCorrection" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsLock" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DateOfPayment" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Employee_HistorySalary" Member="Employee" ThisKey="EmployeeID" OtherKey="ID" Type="Employee" IsForeignKey="true" />
+      <Association Name="Sector_HistorySalary" Member="Sector" ThisKey="SectorID" OtherKey="ID" Type="Sector" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IndebtPersons" Member="IndebtPersons">
+    <Type Name="IndebtPerson">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="IndebtPerson_CapitalAssetsCard" Member="CapitalAssetsCards" ThisKey="ID" OtherKey="IndebtPersonID" Type="CapitalAssetsCard" />
+      <Association Name="Company_IndebtPerson" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+      <Association Name="Person_IndebtPerson" Member="Person" ThisKey="PersonID" OtherKey="ID" Type="Person" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IntershipTypes" Member="IntershipTypes">
+    <Type Name="IntershipType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="MPINCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="IntershipType_Salary" Member="Salaries" ThisKey="ID" OtherKey="IntershipTypeID" Type="Salary" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ItemCostForRestaurant" Member="ItemCostForRestaurants">
+    <Type Name="ItemCostForRestaurant">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SellPrice" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="PriceForPersonal" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="DDVTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TaxValue" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="SellPriceWithout" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Association Name="ItemCostForRestaurant_ItemCostForRestaurant" Member="ItemCostForRestaurant2" ThisKey="ID" OtherKey="ID" Type="ItemCostForRestaurant" Cardinality="One" />
+      <Association Name="DDVType_ItemCostForRestaurant" Member="DDVType" ThisKey="DDVTypeID" OtherKey="ID" Type="DDVType" IsForeignKey="true" />
+      <Association Name="ItemCostForRestaurant_ItemCostForRestaurant" Member="ItemCostForRestaurant1" ThisKey="ID" OtherKey="ID" Type="ItemCostForRestaurant" IsForeignKey="true" />
+      <Association Name="Item_ItemCostForRestaurant" Member="Item" ThisKey="ItemID" OtherKey="ID" Type="Item" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ItemGroups" Member="ItemGroups">
+    <Type Name="ItemGroup">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Association Name="ItemGroup_ItemSubGroup" Member="ItemSubGroups" ThisKey="ID" OtherKey="ItemGroupID" Type="ItemSubGroup" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ItemOriginalCosts" Member="ItemOriginalCosts">
+    <Type Name="ItemOriginalCost">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OriginalCost" Type="System.Decimal" DbType="Decimal(18,4) NOT NULL" CanBeNull="false" />
+      <Column Name="SellValue" Type="System.Decimal" DbType="Decimal(18,4) NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsInput" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="MaterialDocumentTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DocumentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DocumentItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SupplierID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ItemOriginalCost_HistoryItemOriginalCost" Member="HistoryItemOriginalCosts" ThisKey="ID" OtherKey="ItemOriginalCostID" Type="HistoryItemOriginalCost" />
+      <Association Name="Client_ItemOriginalCost" Member="Client" ThisKey="SupplierID" OtherKey="ID" Type="Client" IsForeignKey="true" />
+      <Association Name="Item_ItemOriginalCost" Member="Item" ThisKey="ItemID" OtherKey="ID" Type="Item" IsForeignKey="true" />
+      <Association Name="MaterialDocumentType_ItemOriginalCost" Member="MaterialDocumentType" ThisKey="MaterialDocumentTypeID" OtherKey="ID" Type="MaterialDocumentType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Items" Member="Items">
+    <Type Name="Item">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SubCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="UnitID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Manufacturer" Type="System.String" DbType="NVarChar(155)" CanBeNull="true" />
+      <Column Name="NativityStateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemSubGroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsNormative" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsServed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Item_AccountsItem" Member="AccountsItems" ThisKey="ID" OtherKey="ItemID" Type="AccountsItem" />
+      <Association Name="Item_AdvanceInvoiceItem" Member="AdvanceInvoiceItems" ThisKey="ID" OtherKey="ItemID" Type="AdvanceInvoiceItem" />
+      <Association Name="Item_EntranceItem" Member="EntranceItems" ThisKey="ID" OtherKey="ItemID" Type="EntranceItem" />
+      <Association Name="Item_ItemCostForRestaurant" Member="ItemCostForRestaurants" ThisKey="ID" OtherKey="ItemID" Type="ItemCostForRestaurant" />
+      <Association Name="Item_ItemOriginalCost" Member="ItemOriginalCosts" ThisKey="ID" OtherKey="ItemID" Type="ItemOriginalCost" />
+      <Association Name="Item_LevellingItem" Member="LevellingItems" ThisKey="ID" OtherKey="ItemID" Type="LevellingItem" />
+      <Association Name="Item_Normative" Member="Normatives" ThisKey="ID" OtherKey="ItemID" Type="Normative" />
+      <Association Name="Item_NormativesItem" Member="NormativesItems" ThisKey="ID" OtherKey="ItemID" Type="NormativesItem" />
+      <Association Name="Item_OutgoingFactureItem" Member="OutgoingFactureItems" ThisKey="ID" OtherKey="ItemID" Type="OutgoingFactureItem" />
+      <Association Name="Item_PayOffItem" Member="PayOffItems" ThisKey="ID" OtherKey="ItemID" Type="PayOffItem" />
+      <Association Name="Item_PayOffStoreWorkUnit" Member="PayOffStoreWorkUnits" ThisKey="ID" OtherKey="ItemID" Type="PayOffStoreWorkUnit" />
+      <Association Name="Item_ReturnyItem" Member="ReturnyItems" ThisKey="ID" OtherKey="ItemID" Type="ReturnyItem" />
+      <Association Name="Item_StoreEntanceItem" Member="StoreEntanceItems" ThisKey="ID" OtherKey="ItemID" Type="StoreEntanceItem" />
+      <Association Name="Item_StorePayOffItem" Member="StorePayOffItems" ThisKey="ID" OtherKey="ItemID" Type="StorePayOffItem" />
+      <Association Name="Item_StoreReturnyItem" Member="StoreReturnyItems" ThisKey="ID" OtherKey="ItemID" Type="StoreReturnyItem" />
+      <Association Name="ItemSubGroup_Item" Member="ItemSubGroup" ThisKey="ItemSubGroupID" OtherKey="ID" Type="ItemSubGroup" IsForeignKey="true" />
+      <Association Name="State_Item" Member="State" ThisKey="NativityStateID" OtherKey="ID" Type="State" IsForeignKey="true" />
+      <Association Name="Unit_Item" Member="Unit" ThisKey="UnitID" OtherKey="ID" Type="Unit" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ItemSubGroups" Member="ItemSubGroups">
+    <Type Name="ItemSubGroup">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Decription" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="ItemGroupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="ItemSubGroup_Item" Member="Items" ThisKey="ID" OtherKey="ItemSubGroupID" Type="Item" />
+      <Association Name="ItemSubGroup_Normative" Member="Normatives" ThisKey="ID" OtherKey="ItemSubGroupID" Type="Normative" />
+      <Association Name="ItemGroup_ItemSubGroup" Member="ItemGroup" ThisKey="ItemGroupID" OtherKey="ID" Type="ItemGroup" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LevellingItems" Member="LevellingItems">
+    <Type Name="LevellingItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LevellingID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OrdinalNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="OldValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="NewValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Item_LevellingItem" Member="Item" ThisKey="ItemID" OtherKey="ID" Type="Item" IsForeignKey="true" />
+      <Association Name="Levelling_LevellingItem" Member="Levelling" ThisKey="LevellingID" OtherKey="ID" Type="Levelling" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Levellings" Member="Levellings">
+    <Type Name="Levelling">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LevellingNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Levelling_LevellingItem" Member="LevellingItems" ThisKey="ID" OtherKey="LevellingID" Type="LevellingItem" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Locations" Member="Locations">
+    <Type Name="Location">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Location_CapitalAssetsCard" Member="CapitalAssetsCards" ThisKey="ID" OtherKey="LocationID" Type="CapitalAssetsCard" />
+      <Association Name="Location_OrderItem" Member="OrderItems" ThisKey="ID" OtherKey="LocationID" Type="OrderItem" />
+      <Association Name="Company_Location" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MaterialBalanceReport" Member="MaterialBalanceReports">
+    <Type Name="MaterialBalanceReport">
+      <Column Name="ItemCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ItemName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UnitName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="OriginalCost" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="InQuantity" Type="System.Decimal" DbType="Decimal(18,4) NOT NULL" CanBeNull="false" />
+      <Column Name="OutQuantity" Type="System.Decimal" DbType="Decimal(18,4) NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="WorkUnit" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MaterialDocumentSubTypes" Member="MaterialDocumentSubTypes">
+    <Type Name="MaterialDocumentSubType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MaterialDocumentTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="MaterialDocumentSubType_Entrance" Member="Entrances" ThisKey="ID" OtherKey="EntranceTypeID" Type="Entrance" />
+      <Association Name="MaterialDocumentSubType_PayOff" Member="PayOffs" ThisKey="ID" OtherKey="TypeID" Type="PayOff" />
+      <Association Name="MaterialDocumentSubType_Returnee" Member="Returnees" ThisKey="ID" OtherKey="TypeID" Type="Returnee" />
+      <Association Name="MaterialDocumentSubType_StorePayOff" Member="StorePayOffs" ThisKey="ID" OtherKey="TypeID" Type="StorePayOff" />
+      <Association Name="MaterialDocumentSubType_StoreReturnee" Member="StoreReturnees" ThisKey="ID" OtherKey="TypeID" Type="StoreReturnee" />
+      <Association Name="MaterialDocumentSubType_StoreWorkUnitEntrance" Member="StoreWorkUnitEntrances" ThisKey="ID" OtherKey="MaterialDocumentSubTypeID" Type="StoreWorkUnitEntrance" />
+      <Association Name="MaterialDocumentType_MaterialDocumentSubType" Member="MaterialDocumentType" ThisKey="MaterialDocumentTypeID" OtherKey="ID" Type="MaterialDocumentType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MaterialDocumentTypes" Member="MaterialDocumentTypes">
+    <Type Name="MaterialDocumentType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="MaterialDocumentType_HistoryItemOriginalCost" Member="HistoryItemOriginalCosts" ThisKey="ID" OtherKey="MaterialDocumentTypeID" Type="HistoryItemOriginalCost" />
+      <Association Name="MaterialDocumentType_ItemOriginalCost" Member="ItemOriginalCosts" ThisKey="ID" OtherKey="MaterialDocumentTypeID" Type="ItemOriginalCost" />
+      <Association Name="MaterialDocumentType_MaterialDocumentSubType" Member="MaterialDocumentSubTypes" ThisKey="ID" OtherKey="MaterialDocumentTypeID" Type="MaterialDocumentSubType" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MaterialFactures" Member="MaterialFactures">
+    <Type Name="MaterialFacture">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OrdinalNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FactureNumber" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="FactureDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CurrencyDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="MaterialFacture_EntranceFacture" Member="EntranceFactures" ThisKey="ID" OtherKey="MaterialFactureID" Type="EntranceFacture" />
+      <Association Name="MaterialFacture_EntranceItem" Member="EntranceItems" ThisKey="ID" OtherKey="MaterialFacturesID" Type="EntranceItem" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MonthlyDatas" Member="MonthlyDatas">
+    <Type Name="MonthlyData">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NumberOfHours" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Month" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Year" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AveragePayment" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="TaxRelease" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MonthlyWithholdings" Member="MonthlyWithholdings">
+    <Type Name="MonthlyWithholding">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="WithholdingID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MonthlyCost" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="Month" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Year" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Company_MonthlyWithholding" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+      <Association Name="Withholding_MonthlyWithholding" Member="Withholding" ThisKey="WithholdingID" OtherKey="ID" Type="Withholding" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MPINCompanyInformations" Member="MPINCompanyInformations">
+    <Type Name="MPINCompanyInformation">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TaxNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EMB" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="PhoneCode" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FaxNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="AddressNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Place" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Municipality" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PTTCode" Type="System.String" DbType="NVarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="ContactPerson" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ContactPersonPhoneNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ContactPersonEmail" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="MunicipalityCode" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Municipalities" Member="Municipalities">
+    <Type Name="Municipality">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="MPINCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="Municipality_Branch" Member="Branches" ThisKey="ID" OtherKey="MunicipalityID" Type="Branch" />
+      <Association Name="Municipality_Employee" Member="Employees" ThisKey="ID" OtherKey="MunicipalityID" Type="Employee" />
+      <Association Name="Municipality_PaymentForm" Member="PaymentForms" ThisKey="ID" OtherKey="SubmitMunicipalityID" Type="PaymentForm" />
+      <Association Name="Municipality_Place" Member="Places" ThisKey="ID" OtherKey="MunicipalityID" Type="Place" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Nationalities" Member="Nationalities">
+    <Type Name="Nationality">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Association Name="Nationality_Employee" Member="Employees" ThisKey="ID" OtherKey="NationalityID" Type="Employee" />
+      <Association Name="Nationality_StateHolidaysNationality" Member="StateHolidaysNationalities" ThisKey="ID" OtherKey="NacionalityID" Type="StateHolidaysNationality" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Normatives" Member="Normatives">
+    <Type Name="Normative">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="ItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ItemSubGroupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Normative_NormativesItem" Member="NormativesItems" ThisKey="ID" OtherKey="NormativeID" Type="NormativesItem" />
+      <Association Name="Item_Normative" Member="Item" ThisKey="ItemID" OtherKey="ID" Type="Item" IsForeignKey="true" />
+      <Association Name="ItemSubGroup_Normative" Member="ItemSubGroup" ThisKey="ItemSubGroupID" OtherKey="ID" Type="ItemSubGroup" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NormativesItems" Member="NormativesItems">
+    <Type Name="NormativesItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NormativeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Decimal(18,4) NOT NULL" CanBeNull="false" />
+      <Column Name="UnitID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Item_NormativesItem" Member="Item" ThisKey="ItemID" OtherKey="ID" Type="Item" IsForeignKey="true" />
+      <Association Name="Normative_NormativesItem" Member="Normative" ThisKey="NormativeID" OtherKey="ID" Type="Normative" IsForeignKey="true" />
+      <Association Name="Unit_NormativesItem" Member="Unit" ThisKey="UnitID" OtherKey="ID" Type="Unit" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OrderItems" Member="OrderItems">
+    <Type Name="OrderItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OrdinalNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OrderID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DocumentTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DocumentNumber" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="DocumentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BankslipNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LocationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ChartOfAccountID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsDebt" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="ValuteDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CurrencyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CurrencyValue" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="CurrentValue" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="ChartOfAccountPositionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ChartOfAccount_OrderItem" Member="ChartOfAccount" ThisKey="ChartOfAccountID" OtherKey="ID" Type="ChartOfAccount" IsForeignKey="true" />
+      <Association Name="ChartOfAccount_OrderItem1" Member="ChartOfAccount1" ThisKey="ChartOfAccountPositionID" OtherKey="ID" Type="ChartOfAccount" IsForeignKey="true" />
+      <Association Name="Client_OrderItem" Member="Client" ThisKey="ClientID" OtherKey="ID" Type="Client" IsForeignKey="true" />
+      <Association Name="Currency_OrderItem" Member="Currency" ThisKey="CurrencyID" OtherKey="ID" Type="Currency" IsForeignKey="true" />
+      <Association Name="DocumentType_OrderItem" Member="DocumentType" ThisKey="DocumentTypeID" OtherKey="ID" Type="DocumentType" IsForeignKey="true" />
+      <Association Name="Location_OrderItem" Member="Location" ThisKey="LocationID" OtherKey="ID" Type="Location" IsForeignKey="true" />
+      <Association Name="Order_OrderItem" Member="Order" ThisKey="OrderID" OtherKey="ID" Type="Order" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Orders" Member="Orders">
+    <Type Name="Order">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OrderNumber" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyAccountID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LockDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProgramID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CarriedForwards" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Order_OrderItem" Member="OrderItems" ThisKey="ID" OtherKey="OrderID" Type="OrderItem" />
+      <Association Name="Company_Order" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+      <Association Name="CompanyAccount_Order" Member="CompanyAccount" ThisKey="CompanyAccountID" OtherKey="ID" Type="CompanyAccount" IsForeignKey="true" />
+      <Association Name="Program_Order" Member="Program" ThisKey="ProgramID" OtherKey="ID" Type="Program" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OutgoingFactureItems" Member="OutgoingFactureItems">
+    <Type Name="OutgoingFactureItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OutgoingFactureID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OrdinalNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="SellingPrice" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="TaxPercentage" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="CostWithoutTax" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="TaxValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Association Name="Item_OutgoingFactureItem" Member="Item" ThisKey="ItemID" OtherKey="ID" Type="Item" IsForeignKey="true" />
+      <Association Name="OutgoingFacture_OutgoingFactureItem" Member="OutgoingFacture" ThisKey="OutgoingFactureID" OtherKey="ID" Type="OutgoingFacture" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OutgoingFactures" Member="OutgoingFactures">
+    <Type Name="OutgoingFacture">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FactureNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CreationDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="OutgoingFacture_AdvanceInvoice" Member="AdvanceInvoices" ThisKey="ID" OtherKey="OutgoingFactureID" Type="AdvanceInvoice" />
+      <Association Name="OutgoingFacture_OutgoingFactureItem" Member="OutgoingFactureItems" ThisKey="ID" OtherKey="OutgoingFactureID" Type="OutgoingFactureItem" />
+      <Association Name="OutgoingFacture_PayOff" Member="PayOffs" ThisKey="ID" OtherKey="OutgoingFactureID" Type="PayOff" />
+      <Association Name="Client_OutgoingFacture" Member="Client" ThisKey="ClientID" OtherKey="ID" Type="Client" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ParameterBindableValues" Member="ParameterBindableValues">
+    <Type Name="ParameterBindableValue">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ParameterID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Association Name="Parameter_ParameterBindableValue" Member="Parameter" ThisKey="ParameterID" OtherKey="ID" Type="Parameter" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Parameters" Member="Parameters">
+    <Type Name="Parameter">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="VariableTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsBindableObject" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ValueID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Parameter_ParameterBindableValue" Member="ParameterBindableValues" ThisKey="ID" OtherKey="ParameterID" Type="ParameterBindableValue" />
+      <Association Name="VariableType_Parameter" Member="VariableType" ThisKey="VariableTypeID" OtherKey="ID" Type="VariableType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PaymentForms" Member="PaymentForms">
+    <Type Name="PaymentForm">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FormID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OutFlowChartOfAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OutFlowProgramID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="DateOfPayment" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ApprovalNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubmitDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SubmitMunicipalityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SuspenseAccount" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="InflowChartOfAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InflowProgramID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CompanyAccountID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsSalary" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="CompanyAccount_PaymentForm" Member="CompanyAccount" ThisKey="CompanyAccountID" OtherKey="ID" Type="CompanyAccount" IsForeignKey="true" />
+      <Association Name="ChartOfAccount_PaymentForm" Member="ChartOfAccount" ThisKey="OutFlowChartOfAccountID" OtherKey="ID" Type="ChartOfAccount" IsForeignKey="true" />
+      <Association Name="ChartOfAccount_PaymentForm1" Member="ChartOfAccount1" ThisKey="InflowChartOfAccountID" OtherKey="ID" Type="ChartOfAccount" IsForeignKey="true" />
+      <Association Name="Client_PaymentForm" Member="Client" ThisKey="ClientID" OtherKey="ID" Type="Client" IsForeignKey="true" />
+      <Association Name="Company_PaymentForm" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+      <Association Name="Form_PaymentForm" Member="Form" ThisKey="FormID" OtherKey="ID" Type="Form" IsForeignKey="true" />
+      <Association Name="Municipality_PaymentForm" Member="Municipality" ThisKey="SubmitMunicipalityID" OtherKey="ID" Type="Municipality" IsForeignKey="true" />
+      <Association Name="Program_PaymentForm" Member="Program" ThisKey="OutFlowProgramID" OtherKey="ID" Type="Program" IsForeignKey="true" />
+      <Association Name="Program_PaymentForm1" Member="Program1" ThisKey="InflowProgramID" OtherKey="ID" Type="Program" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PaymentTypes" Member="PaymentTypes">
+    <Type Name="PaymentType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="PaymentType_CashPaymentItem" Member="CashPaymentItems" ThisKey="ID" OtherKey="PaymentTypeID" Type="CashPaymentItem" />
+      <Association Name="PaymentType_DDVtypesChartOfAccount" Member="DDVtypesChartOfAccounts" ThisKey="ID" OtherKey="PaymentTypeID" Type="DDVtypesChartOfAccount" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PayOffItems" Member="PayOffItems">
+    <Type Name="PayOffItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PayOffID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OrdinalNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="OriginalCost" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="SellingPrice" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="MarginPercentage" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="RebatePercentage" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="TaxPercentage" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="CostWithoutTax" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Association Name="PayOffItem_PayOffStoreWorkUnit" Member="PayOffStoreWorkUnits" ThisKey="ID" OtherKey="PayOffItemID" Type="PayOffStoreWorkUnit" />
+      <Association Name="Item_PayOffItem" Member="Item" ThisKey="ItemID" OtherKey="ID" Type="Item" IsForeignKey="true" />
+      <Association Name="PayOff_PayOffItem" Member="PayOff" ThisKey="PayOffID" OtherKey="ID" Type="PayOff" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PayOffs" Member="PayOffs">
+    <Type Name="PayOff">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PayOffNumber" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsForRepresentation" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WorkUnitID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CurrencyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CourseValue" Type="System.Decimal" DbType="Decimal(18,4) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="TypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OutgoingFactureID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="PayOff_PayOffItem" Member="PayOffItems" ThisKey="ID" OtherKey="PayOffID" Type="PayOffItem" />
+      <Association Name="PayOff_PayOffStoreWorkUnit" Member="PayOffStoreWorkUnits" ThisKey="ID" OtherKey="PayOffID" Type="PayOffStoreWorkUnit" />
+      <Association Name="Client_PayOff" Member="Client" ThisKey="ClientID" OtherKey="ID" Type="Client" IsForeignKey="true" />
+      <Association Name="Currency_PayOff" Member="Currency" ThisKey="CurrencyID" OtherKey="ID" Type="Currency" IsForeignKey="true" />
+      <Association Name="MaterialDocumentSubType_PayOff" Member="MaterialDocumentSubType" ThisKey="TypeID" OtherKey="ID" Type="MaterialDocumentSubType" IsForeignKey="true" />
+      <Association Name="OutgoingFacture_PayOff" Member="OutgoingFacture" ThisKey="OutgoingFactureID" OtherKey="ID" Type="OutgoingFacture" IsForeignKey="true" />
+      <Association Name="WorkUnit_PayOff" Member="WorkUnit" ThisKey="WorkUnitID" OtherKey="ID" Type="WorkUnit" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PayOffStoreWorkUnit" Member="PayOffStoreWorkUnits">
+    <Type Name="PayOffStoreWorkUnit">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PayOffID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PayOffItemID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WorkUnitID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DateTimeInsert" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="InitialStateQuantitiItem" Type="System.Decimal" DbType="Decimal(18,4) NOT NULL" CanBeNull="false" />
+      <Column Name="QuantitiItem" Type="System.Decimal" DbType="Decimal(18,4) NOT NULL" CanBeNull="false" />
+      <Column Name="EntrancesID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EntrancesItemID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="PayOffStoreWorkUnit_PayOffStoreWorkUnit" Member="PayOffStoreWorkUnit2" ThisKey="ID" OtherKey="ID" Type="PayOffStoreWorkUnit" Cardinality="One" />
+      <Association Name="Item_PayOffStoreWorkUnit" Member="Item" ThisKey="ItemID" OtherKey="ID" Type="Item" IsForeignKey="true" />
+      <Association Name="PayOff_PayOffStoreWorkUnit" Member="PayOff" ThisKey="PayOffID" OtherKey="ID" Type="PayOff" IsForeignKey="true" />
+      <Association Name="PayOffStoreWorkUnit_PayOffStoreWorkUnit" Member="PayOffStoreWorkUnit1" ThisKey="ID" OtherKey="ID" Type="PayOffStoreWorkUnit" IsForeignKey="true" />
+      <Association Name="PayOffItem_PayOffStoreWorkUnit" Member="PayOffItem" ThisKey="PayOffItemID" OtherKey="ID" Type="PayOffItem" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Persons" Member="Persons">
+    <Type Name="Person">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EMBG" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Person_CashDeskPerson" Member="CashDeskPersons" ThisKey="ID" OtherKey="PersonID" Type="CashDeskPerson" />
+      <Association Name="Person_Employee" Member="Employees" ThisKey="ID" OtherKey="PersonID" Type="Employee" />
+      <Association Name="Person_IndebtPerson" Member="IndebtPersons" ThisKey="ID" OtherKey="PersonID" Type="IndebtPerson" />
+      <Association Name="Company_Person" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Places" Member="Places">
+    <Type Name="Place">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MunicipalityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PostalCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="Place_Client" Member="Clients" ThisKey="ID" OtherKey="PlaceID" Type="Client" />
+      <Association Name="Municipality_Place" Member="Municipality" ThisKey="MunicipalityID" OtherKey="ID" Type="Municipality" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Programs" Member="Programs">
+    <Type Name="Program">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(70) NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Program_Order" Member="Orders" ThisKey="ID" OtherKey="ProgramID" Type="Order" />
+      <Association Name="Program_PaymentForm" Member="PaymentForms" ThisKey="ID" OtherKey="OutFlowProgramID" Type="PaymentForm" />
+      <Association Name="Program_PaymentForm1" Member="PaymentForms1" ThisKey="ID" OtherKey="InflowProgramID" Type="PaymentForm" />
+      <Association Name="Company_Program" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Religions" Member="Religions">
+    <Type Name="Religion">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Association Name="Religion_Employee" Member="Employees" ThisKey="ID" OtherKey="ReligionID" Type="Employee" />
+      <Association Name="Religion_StateHolidaysReligion" Member="StateHolidaysReligions" ThisKey="ID" OtherKey="ReligionID" Type="StateHolidaysReligion" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Returnees" Member="Returnees">
+    <Type Name="Returnee">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="InputDocument" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="ReturneesNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WorkUnitsID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Returnee_ReturnyItem" Member="ReturnyItems" ThisKey="ID" OtherKey="ReturnyID" Type="ReturnyItem" />
+      <Association Name="Client_Returnee" Member="Client" ThisKey="ClientID" OtherKey="ID" Type="Client" IsForeignKey="true" />
+      <Association Name="MaterialDocumentSubType_Returnee" Member="MaterialDocumentSubType" ThisKey="TypeID" OtherKey="ID" Type="MaterialDocumentSubType" IsForeignKey="true" />
+      <Association Name="WorkUnit_Returnee" Member="WorkUnit" ThisKey="WorkUnitsID" OtherKey="ID" Type="WorkUnit" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ReturnyItems" Member="ReturnyItems">
+    <Type Name="ReturnyItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ReturnyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OrdinaryNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="OriginalValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="SellValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Association Name="Item_ReturnyItem" Member="Item" ThisKey="ItemID" OtherKey="ID" Type="Item" IsForeignKey="true" />
+      <Association Name="Returnee_ReturnyItem" Member="Returnee" ThisKey="ReturnyID" OtherKey="ID" Type="Returnee" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RevaluationFactors" Member="RevaluationFactors">
+    <Type Name="RevaluationFactor">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Year" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Old" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="January" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="February" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="March" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="April" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="May" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="June" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="July" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="August" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="September" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="October" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="November" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="December" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Company_RevaluationFactor" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Roles" Member="Roles">
+    <Type Name="Role">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Association Name="Role_RolesFunction" Member="RolesFunctions" ThisKey="ID" OtherKey="RoleID" Type="RolesFunction" />
+      <Association Name="Role_User" Member="Users" ThisKey="ID" OtherKey="RoleID" Type="User" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RolesFunctions" Member="RolesFunctions">
+    <Type Name="RolesFunction">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RoleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FunctionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Role_RolesFunction" Member="Role" ThisKey="RoleID" OtherKey="ID" Type="Role" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Salaries" Member="Salaries">
+    <Type Name="Salary">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Month" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Year" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NetProduceHours" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NetProduceValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="NetNormHours" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NetNormValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="IllnessHours" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IllnessValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="IllnessSocialHours" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IllnessSocialValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="VacationHours" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="VacationValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="StateHolidayHours" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StateHolidayValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="BaseCostValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="SectorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AllowanceValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="GrossAmmount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="PersonalTax" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="PensionValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="PensionValueAdditionalValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="HealthValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="HealtValueAdditionalValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="AdditionalValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="AdditionalValueAdditionalValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="EmployValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="EmployValueAdditionalValue" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="TaxRealeseValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="NonpaidHours" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PrivateAbsenceHours" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PrivateAbsenceValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="IntershipTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsCorrection" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DateOfPayment" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsLock" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Fond" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Association Name="Company_Salary" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+      <Association Name="Employee_Salary" Member="Employee" ThisKey="EmployeeID" OtherKey="ID" Type="Employee" IsForeignKey="true" />
+      <Association Name="IntershipType_Salary" Member="IntershipType" ThisKey="IntershipTypeID" OtherKey="ID" Type="IntershipType" IsForeignKey="true" />
+      <Association Name="Sector_Salary" Member="Sector" ThisKey="SectorID" OtherKey="ID" Type="Sector" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SalaryParameters" Member="SalaryParameters">
+    <Type Name="SalaryParameter">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ParameterValue" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="VariableTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="VariableType_SalaryParameter" Member="VariableType" ThisKey="VariableTypeID" OtherKey="ID" Type="VariableType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sectors" Member="Sectors">
+    <Type Name="Sector">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Sector_Employee" Member="Employees" ThisKey="ID" OtherKey="SectorID" Type="Employee" />
+      <Association Name="Sector_HistorySalary" Member="HistorySalaries" ThisKey="ID" OtherKey="SectorID" Type="HistorySalary" />
+      <Association Name="Sector_Salary" Member="Salaries" ThisKey="ID" OtherKey="SectorID" Type="Salary" />
+      <Association Name="Company_Sector" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StateHolidays" Member="StateHolidays">
+    <Type Name="StateHoliday">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Year" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="StateHoliday_StateHolidaysNationality" Member="StateHolidaysNationalities" ThisKey="ID" OtherKey="StateHolidayID" Type="StateHolidaysNationality" />
+      <Association Name="StateHoliday_StateHolidaysReligion" Member="StateHolidaysReligions" ThisKey="ID" OtherKey="StateHolidayID" Type="StateHolidaysReligion" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StateHolidaysNationalities" Member="StateHolidaysNationalities">
+    <Type Name="StateHolidaysNationality">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="StateHolidayID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NacionalityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Nationality_StateHolidaysNationality" Member="Nationality" ThisKey="NacionalityID" OtherKey="ID" Type="Nationality" IsForeignKey="true" />
+      <Association Name="StateHoliday_StateHolidaysNationality" Member="StateHoliday" ThisKey="StateHolidayID" OtherKey="ID" Type="StateHoliday" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StateHolidaysReligions" Member="StateHolidaysReligions">
+    <Type Name="StateHolidaysReligion">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="StateHolidayID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ReligionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Religion_StateHolidaysReligion" Member="Religion" ThisKey="ReligionID" OtherKey="ID" Type="Religion" IsForeignKey="true" />
+      <Association Name="StateHoliday_StateHolidaysReligion" Member="StateHoliday" ThisKey="StateHolidayID" OtherKey="ID" Type="StateHoliday" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.States" Member="States">
+    <Type Name="State">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="State_Item" Member="Items" ThisKey="ID" OtherKey="NativityStateID" Type="Item" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StoreEntanceItems" Member="StoreEntanceItems">
+    <Type Name="StoreEntanceItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OrdinalNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StoreWorkUnitEntranceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="OriginalCost" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="IsOwn" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TaxPercentage" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="TaxValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="FactureValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="StoreEntranceFacturesID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="StoreEntanceItem_StoreEntanceItem" Member="StoreEntanceItem2" ThisKey="ID" OtherKey="ID" Type="StoreEntanceItem" Cardinality="One" />
+      <Association Name="Item_StoreEntanceItem" Member="Item" ThisKey="ItemID" OtherKey="ID" Type="Item" IsForeignKey="true" />
+      <Association Name="StoreEntanceItem_StoreEntanceItem" Member="StoreEntanceItem1" ThisKey="ID" OtherKey="ID" Type="StoreEntanceItem" IsForeignKey="true" />
+      <Association Name="StoreWorkUnitEntrance_StoreEntanceItem" Member="StoreWorkUnitEntrance" ThisKey="StoreWorkUnitEntranceID" OtherKey="ID" Type="StoreWorkUnitEntrance" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StoreEntancesFactures" Member="StoreEntancesFactures">
+    <Type Name="StoreEntancesFacture">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OrdinalNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FactureNumber" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="FactureDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CurrencyDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="StoreEntancesFacture_StoreWorkUnitEntrancesFacture" Member="StoreWorkUnitEntrancesFactures" ThisKey="ID" OtherKey="StoreEntranceFactureID" Type="StoreWorkUnitEntrancesFacture" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StorePayOffItems" Member="StorePayOffItems">
+    <Type Name="StorePayOffItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PayOffID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OrdinalNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Decimal(18,4) NOT NULL" CanBeNull="false" />
+      <Column Name="OriginalCost" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Association Name="Item_StorePayOffItem" Member="Item" ThisKey="ItemID" OtherKey="ID" Type="Item" IsForeignKey="true" />
+      <Association Name="StorePayOff_StorePayOffItem" Member="StorePayOff" ThisKey="PayOffID" OtherKey="ID" Type="StorePayOff" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StorePayOffs" Member="StorePayOffs">
+    <Type Name="StorePayOff">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PayOffNumber" Type="System.String" DbType="NVarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsForRepresentation" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="WorkUnitID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OutgoingFactureID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ForWorkUnitID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="StorePayOff_StorePayOffItem" Member="StorePayOffItems" ThisKey="ID" OtherKey="PayOffID" Type="StorePayOffItem" />
+      <Association Name="MaterialDocumentSubType_StorePayOff" Member="MaterialDocumentSubType" ThisKey="TypeID" OtherKey="ID" Type="MaterialDocumentSubType" IsForeignKey="true" />
+      <Association Name="WorkUnit_StorePayOff" Member="WorkUnit" ThisKey="WorkUnitID" OtherKey="ID" Type="WorkUnit" IsForeignKey="true" />
+      <Association Name="WorkUnit_StorePayOff1" Member="WorkUnit1" ThisKey="WorkUnitID" OtherKey="ID" Type="WorkUnit" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StoreReturnees" Member="StoreReturnees">
+    <Type Name="StoreReturnee">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ReturnesNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InputDocument" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="InsertDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="WorkUnitID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ForWorkUnitID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="StoreReturnee_StoreReturnyItem" Member="StoreReturnyItems" ThisKey="ID" OtherKey="ReturnyID" Type="StoreReturnyItem" />
+      <Association Name="MaterialDocumentSubType_StoreReturnee" Member="MaterialDocumentSubType" ThisKey="TypeID" OtherKey="ID" Type="MaterialDocumentSubType" IsForeignKey="true" />
+      <Association Name="WorkUnit_StoreReturnee" Member="WorkUnit" ThisKey="WorkUnitID" OtherKey="ID" Type="WorkUnit" IsForeignKey="true" />
+      <Association Name="WorkUnit_StoreReturnee1" Member="WorkUnit1" ThisKey="ForWorkUnitID" OtherKey="ID" Type="WorkUnit" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StoreReturnyItems" Member="StoreReturnyItems">
+    <Type Name="StoreReturnyItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ReturnyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OrdinalNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Decimal(18,4) NOT NULL" CanBeNull="false" />
+      <Column Name="OriginalValue" Type="System.Decimal" DbType="Decimal(18,4) NOT NULL" CanBeNull="false" />
+      <Column Name="SellValue" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="InsertDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Item_StoreReturnyItem" Member="Item" ThisKey="ItemID" OtherKey="ID" Type="Item" IsForeignKey="true" />
+      <Association Name="StoreReturnee_StoreReturnyItem" Member="StoreReturnee" ThisKey="ReturnyID" OtherKey="ID" Type="StoreReturnee" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StoreWorkUnitEntrances" Member="StoreWorkUnitEntrances">
+    <Type Name="StoreWorkUnitEntrance">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EntranceNumber" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="EntranceDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SupplierID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OrderNumberByManufacture" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MaterialDocumentSubTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="WorkUnitID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ForWorkUnitID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FactureValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="ExchangeDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EvidenceNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="InputDocument" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="StoreWorkUnitEntrance_StoreEntanceItem" Member="StoreEntanceItems" ThisKey="ID" OtherKey="StoreWorkUnitEntranceID" Type="StoreEntanceItem" />
+      <Association Name="StoreWorkUnitEntrance_StoreWorkUnitEntrancesFacture" Member="StoreWorkUnitEntrancesFactures" ThisKey="ID" OtherKey="StoreWorkUnitEntranceID" Type="StoreWorkUnitEntrancesFacture" />
+      <Association Name="Client_StoreWorkUnitEntrance" Member="Client" ThisKey="SupplierID" OtherKey="ID" Type="Client" IsForeignKey="true" />
+      <Association Name="MaterialDocumentSubType_StoreWorkUnitEntrance" Member="MaterialDocumentSubType" ThisKey="MaterialDocumentSubTypeID" OtherKey="ID" Type="MaterialDocumentSubType" IsForeignKey="true" />
+      <Association Name="WorkUnit_StoreWorkUnitEntrance" Member="WorkUnit" ThisKey="WorkUnitID" OtherKey="ID" Type="WorkUnit" IsForeignKey="true" />
+      <Association Name="WorkUnit_StoreWorkUnitEntrance1" Member="WorkUnit1" ThisKey="ForWorkUnitID" OtherKey="ID" Type="WorkUnit" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StoreWorkUnitEntrancesFactures" Member="StoreWorkUnitEntrancesFactures">
+    <Type Name="StoreWorkUnitEntrancesFacture">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="StoreWorkUnitEntranceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StoreEntranceFactureID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="StoreEntancesFacture_StoreWorkUnitEntrancesFacture" Member="StoreEntancesFacture" ThisKey="StoreEntranceFactureID" OtherKey="ID" Type="StoreEntancesFacture" IsForeignKey="true" />
+      <Association Name="StoreWorkUnitEntrance_StoreWorkUnitEntrancesFacture" Member="StoreWorkUnitEntrance" ThisKey="StoreWorkUnitEntranceID" OtherKey="ID" Type="StoreWorkUnitEntrance" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TableNames" Member="TableNames">
+    <Type Name="TableName">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IsTable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ParentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FunctionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsExpand" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="TableName_TableName" Member="TableNames" ThisKey="ID" OtherKey="ParentID" Type="TableName" />
+      <Association Name="TableName_TableName" Member="TableName1" ThisKey="ParentID" OtherKey="ID" Type="TableName" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TemporaryCapitalAssetsCards" Member="TemporaryCapitalAssetsCards">
+    <Type Name="TemporaryCapitalAssetsCard">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Number" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="InventoryNumber" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="AmortizationGroupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Factor" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="OrderDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ApplicationDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DebitDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="WorkUnitID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IndebtPersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FactureNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FactureValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="DDVPercentage" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="IsForDDV" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LocationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AccountCode" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="LastAmortizationDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="OriginalCost" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="WrittenOffValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="PresentValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="AmortizationValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="InsertDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsAmortization" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CapitalAssetsCardID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyAccountID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CapitalAssetsCard_TemporaryCapitalAssetsCard" Member="CapitalAssetsCard" ThisKey="CapitalAssetsCardID" OtherKey="ID" Type="CapitalAssetsCard" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Units" Member="Units">
+    <Type Name="Unit">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Unit_Item" Member="Items" ThisKey="ID" OtherKey="UnitID" Type="Item" />
+      <Association Name="Unit_NormativesItem" Member="NormativesItems" ThisKey="ID" OtherKey="UnitID" Type="NormativesItem" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserLogs" Member="UserLogs">
+    <Type Name="UserLog">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Page" Type="System.String" DbType="NVarChar(350) NOT NULL" CanBeNull="false" />
+      <Column Name="DataTable" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="IpAddress" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ActionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VariableTypes" Member="VariableTypes">
+    <Type Name="VariableType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CSintakse" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="VariableType_EntryControl" Member="EntryControls" ThisKey="ID" OtherKey="VariableTypeID" Type="EntryControl" />
+      <Association Name="VariableType_Parameter" Member="Parameters" ThisKey="ID" OtherKey="VariableTypeID" Type="Parameter" />
+      <Association Name="VariableType_SalaryParameter" Member="SalaryParameters" ThisKey="ID" OtherKey="VariableTypeID" Type="SalaryParameter" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Withholdings" Member="Withholdings">
+    <Type Name="Withholding">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="DocumentNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TotalCost" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="MonthlyCost" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="FromDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ToDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsAutomaticRecord" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsPaid" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Withholding_MonthlyWithholding" Member="MonthlyWithholdings" ThisKey="ID" OtherKey="WithholdingID" Type="MonthlyWithholding" />
+      <Association Name="Client_Withholding" Member="Client" ThisKey="ClientID" OtherKey="ID" Type="Client" IsForeignKey="true" />
+      <Association Name="Company_Withholding" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+      <Association Name="Employee_Withholding" Member="Employee" ThisKey="EmployeeID" OtherKey="ID" Type="Employee" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WorkPositions" Member="WorkPositions">
+    <Type Name="WorkPosition">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="WorkPosition_Employee" Member="Employees" ThisKey="ID" OtherKey="WorkPositionID" Type="Employee" />
+      <Association Name="Company_WorkPosition" Member="Company" ThisKey="CompanyID" OtherKey="ID" Type="Company" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(6) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="WorkUnitID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RoleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="User_Account" Member="Accounts" ThisKey="ID" OtherKey="UserID" Type="Account" />
+      <Association Name="User_CompanyAccountsUser" Member="CompanyAccountsUsers" ThisKey="ID" OtherKey="UserID" Type="CompanyAccountsUser" />
+      <Association Name="Role_User" Member="Role" ThisKey="RoleID" OtherKey="ID" Type="Role" IsForeignKey="true" />
+      <Association Name="WorkUnit_User" Member="WorkUnit" ThisKey="WorkUnitID" OtherKey="ID" Type="WorkUnit" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

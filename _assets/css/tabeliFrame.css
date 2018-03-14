@@ -1,0 +1,58 @@
+#tabeliFrame {
+	width: 800px;
+	position: relative;
+	margin: 0px;
+	padding-top: 15px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+}
+
+#tabeliFrame #header {
+	background-image: url(../img/headerBckg.gif);
+	background-repeat: repeat-x;
+	margin: 0px;
+	padding: 0px;
+	height: 25px;
+	width: 790px;
+	color: #2D3931;
+}
+#tabeliFrame #header #content {
+	background-color: #8B9B71;
+	background-image: url(../img/headerAngle.gif);
+	background-repeat: no-repeat;
+	background-position: right top;
+	width: 350px;
+	padding-right: 35px;
+	height: 20px;
+	font-size: 14px;
+	font-weight: bold;
+	color:#FFF;
+	padding-top: 5px;
+	padding-bottom: 0px;
+	padding-left: 10px;
+}
+
+#tabeliFrame #contentOuter {
+	border-right-width: 2px;
+	border-bottom-width: 2px;
+	border-left-width: 2px;
+	border-top-style: none;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #8B9B71;
+	border-bottom-color: #8B9B71;
+	border-left-color: #8B9B71;
+	background-color: #FFF;
+	margin: 0px;
+	padding: 5px;
+	width: 776px;
+}
+
+#tabeliFrame #contentOuter #contentInner {
+	background-color: #FFF;
+	margin: 0px;
+	padding: 5px;
+	width: 766px;
+}
